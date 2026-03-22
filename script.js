@@ -1,6 +1,6 @@
 // --- CONFIGURACIÓN DE DATOS ---
 const DATOS_PAGO = {
-    titular: "ELITE SHOP",
+    titular: "FRANKLIN R. FLORES C.",
     numero: "78914558",
     qr: "img/qr.png",
     whatsappAdmin: "59178914558" // Tu número de WhatsApp aquí
