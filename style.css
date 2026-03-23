@@ -1,81 +1,389 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* --- CONFIGURACIÓN BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     background: #0a0e1a;
     color: #ffffff;
     font-family: 'Century Gothic', sans-serif;
     line-height: 1.4;
+    padding-bottom: 50px;
+    /* Espacio al final */
 }
 
-.container { max-width: 480px; margin: 0 auto; padding: 20px; }
-.hidden { display: none !important; }
-
-/* HEADER */
-.header-v2 { text-align: center; padding: 20px 0; }
-.logo-principal { width: 100%; border-radius: 0; border: 2px solid #00f2ff; box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); display: block; margin: 0 auto; height: auto}
-
-.titulo-v2 { text-align: center; font-size: 1.2em; color: #00f2ff; margin: 15px 0; letter-spacing: 1px; }
-
-/* GRID CATALOGO */
-.grid-juegos { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-.card-juego { 
-    background: #151c2c; border: 1px solid rgba(0, 242, 255, 0.2); 
-    padding: 10px; border-radius: 15px; text-align: center; cursor: pointer;
-}
-.card-juego img { width: 100%; border-radius: 10px; margin-bottom: 5px; }
-
-/* FORMULARIO */
-.card-v2 { background: #151c2c; border: 1px solid rgba(0, 242, 255, 0.2); border-radius: 20px; padding: 25px; position: relative; }
-.btn-cerrar-v2 { position: absolute; right: 15px; top: 15px; background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
-
-.seccion-paso { position: relative; padding-left: 45px; margin-bottom: 25px; }
-.paso-numero { 
-    position: absolute; left: 0; top: 0; width: 32px; height: 32px; 
-    background: #00f2ff; color: #000; border-radius: 50%; 
-    display: flex; align-items: center; justify-content: center; font-weight: bold;
+/* --- CONTENEDORES --- */
+.wrapper {
+    width: 80%;
+    /* Ocupa el 80% en PC */
+    max-width: 1200px;
+    margin: 0 auto;
+    /* CENTRADO */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Espacio entre elementos */
 }
 
-.label-paso { font-size: 0.9em; font-weight: bold; display: block; margin-bottom: 5px; }
-
-input, select { 
-    width: 100%; background: #000; border: 1px solid #334155; 
-    color: white; padding: 12px; border-radius: 10px; 
-    margin-top: 8px; font-family: inherit; font-size: 0.9em;
+/* Para los formularios y tickets que deben ser angostos */
+.container {
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-.id-group-v2 { display: flex; gap: 10px; }
-
-/* PAQUETES */
-.grid-paquetes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-.pack-box { 
-    background: #000; border: 1px solid rgba(0,242,255,0.2); 
-    padding: 12px; border-radius: 10px; text-align: center; cursor: pointer;
+.hidden {
+    display: none !important;
 }
-.pack-box.selected { border-color: #00f2ff; background: rgba(0, 242, 255, 0.1); }
 
-/* PAGO */
-.pago-selector { display: flex; gap: 10px; margin-top: 10px; }
-.btn-pago { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #000; color: white; cursor: pointer; }
-.btn-pago.selected { background: #00f2ff; color: #000; border-color: #00f2ff; font-weight: bold; }
-
-/* BOTONES */
-.btn-v2 { width: 100%; padding: 15px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; font-family: inherit; }
-.btn-accion { background: #00f2ff; color: #000; margin-top: 15px; }
-.btn-whatsapp { 
-    background: #05976a; color: white; display: flex; align-items: center; 
-    justify-content: center; gap: 10px; max-width: 280px; margin: 20px auto 0;
+/* --- BANNER --- */
+.main-banner {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    line-height: 0;
+    margin-top: 20px;
+    box-shadow: 0 5px 20px rgba(0, 242, 255, 0.2);
 }
-.wa-icon { width: 20px; fill: white; }
 
-/* TICKET */
-.detalle-box-v2 { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.05); }
-.pago-row { display: flex; justify-content: space-between; align-items: center; background: #000; padding: 10px 15px; border-radius: 8px; margin-top: 10px; }
-.btn-copiar-mini { background: #00f2ff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: bold; cursor: pointer; }
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
 
-/* MODAL */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; }
-.hourglass { font-size: 50px; display: inline-block; animation: spin 2s infinite; margin-bottom: 15px; }
-@keyframes spin { 0% { transform: rotate(0); } 50% { transform: rotate(180deg); } 100% { transform: rotate(180deg); } }
+/* --- TÍTULO SECCIÓN --- */
+/* --- TÍTULOS Y CENTRADO --- */
+.titulo-v2 {
+    text-align: center;
+    color: #00f2ff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-.footer-v2 { display: flex; justify-content: space-around; margin-top: 40px; font-size: 11px; }
-.footer-v2 a { color: #94a3b8; text-decoration: none; }
+.titulo-seccion h2 {
+    color: #00f2ff;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.linea-decorativa {
+    width: 50px;
+    height: 3px;
+    background: #00f2ff;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #00f2ff;
+}
+
+/* --- GRILLA DE JUEGOS (CORREGIDA) --- */
+.grid-juegos {
+    display: grid;
+    /* Esto hace que los juegos se acomoden solos */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* IMPORTANTE: Este nombre debe coincidir con el que genera tu script.js */
+.juego-card,
+.card-juego {
+    background: #151c2c;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    padding: 12px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.juego-card:hover,
+.card-juego:hover {
+    transform: translateY(-5px);
+    border-color: #00f2ff;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+.juego-card img,
+.card-juego img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.juego-card h3,
+.card-juego h3 {
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* --- FORMULARIO Y PASOS --- */
+/* --- LA TARJETA (CARD V2) --- */
+.card-v2 {
+    background: #151c2c;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 400px;
+    /* Tamaño perfecto de celular en PC */
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    /* Centrado absoluto */
+}
+
+.btn-cerrar-v2 {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.seccion-paso {
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 25px;
+}
+
+.paso-numero {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: #00f2ff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* 5. Grilla de paquetes dentro del formulario */
+.grid-paquetes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 columnas para los precios */
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/*fondo reciadro de precios*/
+.pack-box {
+    background: #0a0e1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Esta es la clase que el JS activa al hacer clic */
+.pack-box.selected {
+    border-color: #00f2ff;
+    background: rgba(0, 242, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+/* --- MÉTODOS DE PAGO (QR Y TIGO) --- */
+.pago-selector {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-pago {
+    flex: 1;
+    background: #0a0e1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-pago.selected {
+    background: #00f2ff;
+    color: #000;
+    border-color: #00f2ff;
+}
+
+/* --- FILAS DE INFORMACIÓN EN EL TICKET --- */
+/*
+.pago-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid rgba(0, 242, 255, 0.1);
+}
+*/
+
+/* 6. Inputs y Selects */
+input,
+select {
+    width: 100%;
+    background: #000;
+    border: 1px solid #334155;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* --- BOTONES DE FORMULARIO--- */
+/* --- BOTONES DE ACCIÓN (ESTILO REDONDEADO) --- */
+.btn-v2 {
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    /* Botones más ovalados/modernos */
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-accion {
+    background: #00f2ff;
+    color: #000;
+    margin-top: 15px;
+}
+
+
+/* --- BOTÓN WHATSAPP (TAMAÑO CONTROLADO) --- */
+.btn-whatsapp {
+    background: #05976a;
+    color: white;
+    max-width: 300px;
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 50px;
+}
+
+/* ICONO DE WHATSAPP (Reparar tamaño) */
+.wa-icon {
+    width: 24px !important;
+    /* Forzamos tamaño pequeño */
+    height: 24px !important;
+    fill: white;
+    flex-shrink: 0;
+}
+
+/* RELOJ ANIMADO */
+.hourglass {
+    font-size: 50px;
+    display: block;
+    margin: 0 auto 15px;
+    animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*fordo de datos del ticket*/
+.detalle-box-v2 {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- BOTONES MINI (COPIAR Y DESCARGAR) --- */
+.btn-copiar-mini {
+    background: #00f2ff;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- CONTENEDORES DE VISTA (FORMULARIO, TICKET, MODAL FINAL) --- */
+#vista-formulario,
+#vista-ticket,
+.modal-overlay {
+    position: fixed;
+    /* Esto los saca del flujo del catálogo y los pone al frente */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 26, 0.95);
+    /* Fondo oscuro sólido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+    overflow-y: auto;
+    /* Por si el celular es pequeño */
+}
+
+/* --- FOOTER --- */
+.footer-v2 {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    font-size: 12px;
+    padding: 20px;
+}
+
+.footer-v2 a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+/* --- RESPONSIVE (MÓVIL) --- */
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%;
+    }
+
+    .grid-juegos {
+        /* Tus 3 columnas en celular */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .juego-card h3,
+    .card-juego h3 {
+        font-size: 0.65rem;
+    }
+}
