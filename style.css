@@ -385,11 +385,12 @@ select {
     text-align: center;
     font-size: 30px;
     box-shadow: -2px 2px 3px #333;
-    z-index: 1000;
+    z-index: 999999 !important;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
+    isolation: isolate;
 }
 
 .whatsapp-float:hover {
