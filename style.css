@@ -437,7 +437,7 @@ select {
     background-color: #0a0e1a; /*fondo del menu lateral*/
     color: white;
     transition: 0.3s; /* Velocidad del despliegue */
-    z-index: 1000;
+    z-index: 1001;
     box-shadow: 2px 0 5px rgba(0,0,0,0.5);
     padding-top: 60px;
 }
