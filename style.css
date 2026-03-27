@@ -377,15 +377,15 @@ select {
     position: fixed;
     width: 50px;
     height: 50px;
-    bottom: 50px; /*distancia de la base hacia arriba*/
-    right: 30px; /*distancia de la derecha hacia la izquierda*/
+    bottom: 40px; /*distancia de la base hacia arriba*/
+    right: 40px; /*distancia de la derecha hacia la izquierda*/
     background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
     box-shadow: -2px 2px 3px #333;
-    z-index: 1000;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
