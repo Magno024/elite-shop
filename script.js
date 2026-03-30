@@ -7,12 +7,13 @@ const DATOS_PAGO = {
     qr: "img/qr.png",
     whatsappAdmin: "59178914558" // Tu número de WhatsApp aquí
 };
-
+//imagnes y nombres de catalogo de juegos
 const JUEGOS = [
     { id: "ff", nombre: "FREE FIRE", img: "img/ff.png", color: '#00b2ff', bg: 'img/fff.jpg', paquetes: [{ n: "100+10 💎", p: "13 Bs" }, { n: "310+31 💎", p: "38 Bs" }, { n: "520+52 💎", p: "55 Bs" }, { n: "1060+106 💎", p: "100 Bs" }, { n: "2180+218 💎", p: "195 Bs" }, { n: "5600+560 💎", p: "460 Bs" }, { n: "Tarjeta Basica", p: "6 Bs" }, { n: "Tarjeta Semanal", p: "20 Bs" }, { n: "Tarjeta Mensual", p: "85 Bs" }] },
     { id: "ml", nombre: "MOBILE LEGENDS", img: "img/mlbb.png", color: '#f3ae1a', bg: 'img/fml.png', requiereZona: true, paquetes: [{ n: "50 💎", p: "10 Bs" }, { n: "78+8 💎", p: "18 Bs" }, { n: "156+16 💎", p: "30 Bs" }, { n: "234+23 💎", p: "45 Bs" }, { n: "625+81 💎", p: "110 Bs" }, { n: "1860+335 💎", p: "320 Bs" }, { n: "399+589 💎", p: "510 Bs" }, { n: "Pase Crepúsculo", p: "90 Bs" }] },
-    { id: "gs", nombre: "GENSHIN IMPACT", img: "img/gs.png", color: '#ff4b2b', bg: 'img/fml.png', requiereRegion: true, paquetes: [{ n: "60 🌙", p: "15 Bs" }, { n: "120 🌙", p: "30 Bs" }, { n: "300+30 🌙", p: "70 Bs" }, { n: "600+60 🌙", p: "140 Bs" }, { n: "980+110 🌙", p: "180 Bs" }, { n: "1980+260 🌙", p: "360 Bs" }, { n: "3280+600 🌙", p: "550 Bs" }, { n: "Bendición Lunar", p: "65 Bs" }] },
-    { id: "pg", nombre: "PUBG MOBILE", img: "img/pubg.jpg", color: '#0a9b9b', bg: 'img/fml.png', paquetes: [{ n: "60 💵", p: "15 Bs" }, { n: "120 💵", p: "30 Bs" }, { n: "300+25 💵", p: "80 Bs" }, { n: "600+60 💵", p: "115 Bs" }, { n: "900+85 💵", p: "240 Bs" }, { n: "1500+300 💵", p: "300 Bs" }] }
+    { id: "gs", nombre: "GENSHIN IMPACT", img: "img/gs.png", color: '#bd28ce', bg: 'img/fml.png', requiereRegion: true, paquetes: [{ n: "60 🌙", p: "15 Bs" }, { n: "120 🌙", p: "30 Bs" }, { n: "300+30 🌙", p: "70 Bs" }, { n: "600+60 🌙", p: "140 Bs" }, { n: "980+110 🌙", p: "180 Bs" }, { n: "1980+260 🌙", p: "360 Bs" }, { n: "3280+600 🌙", p: "550 Bs" }, { n: "Bendición Lunar", p: "65 Bs" }] },
+    { id: "pg", nombre: "PUBG MOBILE", img: "img/pubg.jpg", color: '#0a9b9b', bg: 'img/fml.png', paquetes: [{ n: "60 💵", p: "15 Bs" }, { n: "120 💵", p: "30 Bs" }, { n: "300+25 💵", p: "80 Bs" }, { n: "600+60 💵", p: "115 Bs" }, { n: "900+85 💵", p: "240 Bs" }, { n: "1500+300 💵", p: "300 Bs" }] },
+    { id: "bl", nombre: "BLOOD STRIKE", img: "img/blood.jpg", color: '#f30f22', bg: 'img/fml.png', paquetes: [{ n: "100+5 🧈", p: "10 Bs" }, { n: "300+20 🧈", p: "28 Bs" }, { n: "500+40 🧈", p: "45 Bs" }, { n: "1000+100 🧈", p: "85 Bs" }, { n: "2000+260 🧈", p: "165 Bs" }, { n: "5000+800 🧈", p: "390 Bs" }] }
 ];
 
 let sel = { juego: null, paquete: null, metodo: null, id: "", nick: "", extra: "" };
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.innerHTML = JUEGOS.map(j => `
         <div class="card-juego" onclick="abrirFormulario('${j.id}')">
             <img src="${j.img}" onerror="this.src='https://via.placeholder.com/150?text=LOGO'">
-            <div style="font-size: 12px; font-weight: bold;">${j.nombre}</div>
+            <div style="font-size: 12px; font-weight: lighter; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">${j.nombre}</div>
         </div>
     `).join('');
 });
@@ -31,20 +32,20 @@ function abrirFormulario(id) {
     sel.juego = JUEGOS.find(j => j.id === id);
 
     // Extraemos el color del juego o usamos el cian por defecto
-    const colorPrimario = sel.juego.color || '#00f2ff';
+    const colorPrimario = sel.juego.color || '#05d2dd';
 
-
-    // 1. CAMBIAR LA IMAGEN DE FONDO DEL BODY
+/*
+// 1. CAMBIAR LA IMAGEN DE FONDO DEL BODY, efecto cristal
     if (sel.juego.bg) {
         document.body.style.backgroundImage = `url('${sel.juego.bg}')`;
     }
-
+*/
     // 1. Cambiar color del Título
     const titulo = document.getElementById("titulo-formulario");
 
     // Forzar el efecto de cristal con el color del juego
     const form = document.getElementById("vista-formulario");
-    form.style.backdropFilter = "blur(12px)";
+    form.style.backdropFilter = "blur(0)";
     form.style.backgroundColor = "rgba(15, 23, 42, 0.7)";
     form.style.border = `1px solid ${sel.juego.color}44`; // Borde sutil del color del juego
 
@@ -59,12 +60,10 @@ function abrirFormulario(id) {
     document.getElementById("vista-catalogo").classList.add("hidden");
     document.getElementById("vista-formulario").classList.remove("hidden");
 
-
     // 3. Logo de juego seleccionado en formulario y campos
     document.getElementById("logo-juego-contenedor").innerHTML = `
         <img src="${sel.juego.img}" style="width:70px; display:block; margin: 0 auto 15px; border-radius:10px; border: 0px solid ${colorPrimario};">
     `;
-
 
     document.getElementById("logo-juego-contenedor").innerHTML = `<img src="${sel.juego.img}" style="width:70px; display:block; margin: 0 auto 15px; border-radius:10px;">`;
     document.getElementById("zona-jugador").classList.toggle("hidden", !sel.juego.requiereZona);
@@ -74,7 +73,7 @@ function abrirFormulario(id) {
     const pGrid = document.getElementById("grid-paquetes");
     pGrid.innerHTML = sel.juego.paquetes.map((p, i) => `
         <div class="pack-box" id="p-${i}" onclick="seleccionarPaquete(${i})" style="border-color: ${colorPrimario}44;">
-            <div style="font-size:15px; color: #fff;">${p.n}</div>
+            <div style="font-size:13px; color: #fff;">${p.n}</div>
             <div style="color:${colorPrimario}; font-weight:bold">${p.p}</div>
         </div>
     `).join('');
@@ -87,7 +86,6 @@ function abrirFormulario(id) {
         btnEnviar.style.boxShadow = `0 4px 15px ${colorPrimario}66`;
     }
 
-
     // Buscamos todos los circulitos de los pasos
     const circulos = document.querySelectorAll('.paso-numero');
     circulos.forEach(circulo => {
@@ -96,8 +94,7 @@ function abrirFormulario(id) {
     });
 
 
-
-    // Creamos un estilo temporal para el efecto Hover con el color del juego
+    // Creamos un estilo temporal para el efecto Hover con el color del juego paquetes
     let estiloHover = document.getElementById("hover-dinamico");
     if (!estiloHover) {
         estiloHover = document.createElement("style");
@@ -127,7 +124,7 @@ function abrirFormulario(id) {
     `;
 
 
-    const colorBase = sel.juego.color || '#00f2ff';
+    const colorBase = sel.juego.color || '#0fd6e0';
 
     // Aplicar un ligero resplandor del color del juego al borde del cristal
     const formGlass = document.getElementById("vista-formulario");
@@ -185,19 +182,19 @@ function mostrarInfoPago() {
     if (sel.metodo === "Tigo Money") {
         info.innerHTML = `
             <div class="detalle-box-v2">
-                <p style="font-size:13px; opacity:0.7">Transferir a Tigo Money:</p>
+                <p style="font-size:13px; opacity:0.7; 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Transferir a Tigo Money:</p>
                 <div class="pago-row">
                     <span>${DATOS_PAGO.numero}</span>
                     <button class="btn-copiar-mini" onclick="copiar()">COPIAR</button>
                 </div>
-                <p style="font-size:13px; margin-top:5px; opacity:0.7">Titular: ${DATOS_PAGO.titular}</p>
+                <p style="font-size:13px; margin-top:5px; opacity:0.7; 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Titular: ${DATOS_PAGO.titular}</p>
             </div>`;
     } else {
         info.innerHTML = `
             <div class="detalle-box-v2" style="text-align:center">
                 <p style="font-size:13px; opacity:0.7">Escanea el QR de Pago:</p>
                 <img src="${DATOS_PAGO.qr}" style="width:220px; margin:10px 0; border:2px solid white; border-radius:10px;">              
-                <p style="font-size:15px; margin-top:3px; opacity:0.7; font-family: 'Calibri Light'">Titular: ${DATOS_PAGO.titular}</p>
+                <p style="font-size:13px; margin-top:3px; opacity:0.7; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Titular: ${DATOS_PAGO.titular}</p>
                 <button class="btn-copiar-mini" onclick="window.open('${DATOS_PAGO.qr}')">DESCARGAR QR</button>
             </div>`;
     }
@@ -215,9 +212,15 @@ function mostrarInfoPago() {
     }
 
     // El botón de "Enviar por WhatsApp" también debe combinar
-    const btnWhatsApp = document.querySelector(".btn-enviar-wa");
+    const btnWhatsApp = document.querySelector(".btn-whatsapp");
     if (btnWhatsApp) {
         btnWhatsApp.style.backgroundColor = colorJuego;
+    }
+
+      // El botón de "copiar mini" también debe combinar
+    const btncopiarmini = document.querySelector(".btn-copiar-mini");
+    if (btncopiarmini) {
+        btncopiarmini.style.backgroundColor = colorJuego;
     }
 
 
@@ -292,7 +295,7 @@ async function enviarWA() {
             `*Paquete:* ${sel.paquete.n}%0A` +
             `*Total:* ${sel.paquete.p}%0A%0A` +
             `*Comprobante:* ${linkFoto}%0A%0A` +
-            `_Verificado automáticamente._`;
+            `_Gracias por tu preferencia, en pocos minutos tu recarga estará lista._`;
 
         const url = `https://wa.me/${DATOS_PAGO.whatsappAdmin}?text=${mensaje}`;
         window.open(url, '_blank');
@@ -367,8 +370,8 @@ function cerrarTicket() {
     document.getElementById("input-comprobante").value = "";
 }
 
-
-//BOTON FLOTANTE WHATSAPP
+/*
+//BOTON FLOTANTE WHATSAPP, sin ese metodo el boton ya no desaparece
 window.addEventListener('scroll', function () {
     var scrollPosition = window.scrollY;
     var whatsappBtn = document.querySelector('.whatsapp-float');
@@ -380,6 +383,7 @@ window.addEventListener('scroll', function () {
         whatsappBtn.style.display = 'none';
     }
 });
+*/
 
 //boton con 3 lineas
 function toggleMenu() {
