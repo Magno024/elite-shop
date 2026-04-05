@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Game Store</title>
     <link rel="icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -41,68 +42,98 @@
     <!-- Fondo oscuro cuando el menú está abierto (opcional) -->
     <div id="overlay" onclick="toggleMenu()"></div>
 
-
     <!--xxxxxxxxx Vista Principal pagina principal xxxxxxxxxx-->
     <div id="vista-catalogo" class="wrapper">
 
-        <!-- Botón de 3 líneas (Hamburguesa) -->
-        <div class="menu-btn" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <!-- banner -->
         <header class="main-banner">
+
+            <div class="header-controls">
+                <div class="menu-btn-new" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- historial -->
+                <div class="btn-historial-flotante" onclick="toggleHistorial()">
+                    <i class="fas fa-receipt"></i>
+                    <span id="badge-historial" class="hidden"></span>
+                </div>
+            </div>
+
+            <div id="modal-historial" class="modal-flotante hidden">
+                <div class="contenido-historial">
+                    <div class="header-modal">
+                        <h4>HISTORIAL DE RECRARGAS</h4>
+                        <button onclick="toggleHistorial()">&times;</button>
+                    </div>
+                    <div id="lista-historial-v2">
+                    </div>
+                </div>
+            </div>
+            <!-- fin historial -->
+            <!-- carrusel -->
             <div class="carrusel-contenedor">
-    <div class="carrusel-track" id="carrusel-track">
-        
-        <div class="carrusel-slide glass-card" style="background-image: url('img/banner1.jpg');">
-            <div class="carrusel-info">
-                <h2>RECARGAS AL <span class="resaltado-neon">INSTANTE</span></h2>
-                <p>Verificado por miles de clientes</p>
-                <button class="btn-oferta" onclick="window.open('https://wa.me/59178914558', '_blank')">Saber Más</button>
+                <div class="carrusel-track" id="carrusel-track">
+
+                    <div class="carrusel-slide glass-card" style="background-image: url('img/banner1.jpg');">
+                        <div class="carrusel-info">
+                            <h2>RECARGAS AL <span class="resaltado-neon">INSTANTE</span></h2>
+                            <p>Verificado por miles de clientes</p>
+                            <button class="btn-oferta"
+                                onclick="window.open('https://facebook.com/groups/664921335647676', '_blank')">Saber
+                                Más</button>
+                        </div>
+                    </div>
+
+                    <div class="carrusel-slide glass-card" style="background-image: url('img/banner2.jpg');">
+                        <div class="carrusel-info">
+                            <h2>+10% de <span class="resaltado-neon">BONUS</span></h2>
+                            <p>En todas las recargas de Free Fire</p>
+                            <button class="btn-oferta" onclick="abrirFormulario('ff')">Recargar FF</button>
+                        </div>
+                    </div>
+
+                    <div class="carrusel-slide glass-card" style="background-image: url('img/banner3.jpg');">
+                        <div class="carrusel-info">
+                            <h2>DIAMANTES con <span class="resaltado-neon">DESCUENTOS</span></h2>
+                            <p>Aprovecha las ofertas de la semana</p>
+                            <button class="btn-oferta" onclick="abrirFormulario('ml')">Recargar MLBB</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="carrusel-indicadores" id="carrusel-indicadores">
+                    <span class="punto activo"></span>
+                    <span class="punto"></span>
+                    <span class="punto"></span>
+                </div>
             </div>
-        </div>
 
-        <div class="carrusel-slide glass-card" style="background-image: url('img/banner2.jpg');">
-            <div class="carrusel-info">
-                <h2>+10% de <span class="resaltado-neon">BONUS</span></h2>
-                <p>En todas las recargas de Free Fire</p>
-                <button class="btn-oferta" onclick="abrirFormulario('ff')">Recargar FF</button>
-            </div>
-        </div>
-
-        <div class="carrusel-slide glass-card" style="background-image: url('img/banner3.jpg');">
-            <div class="carrusel-info">
-                <h2>DIAMANTES con <span class="resaltado-neon">DESCUENTOS</span></h2>
-                <p>Aprovecha las ofertas de la semana</p>
-                <button class="btn-oferta" onclick="abrirFormulario('ml')">Recargar MLBB</button>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="carrusel-indicadores" id="carrusel-indicadores">
-        <span class="punto activo"></span>
-        <span class="punto"></span>
-        <span class="punto"></span>
-    </div>
-</div>
         </header>
 
+        <!---
+        <section id="seccion-historial" class="container">
+            <h3 class="titulo-seccion"><i class="fas fa-history"></i> Mis Recargas Recientes</h3>
+            <div id="lista-historial" class="grid-historial">
+            </div>
+        </section>
+-->
+
         <div class="titulo-seccion">
-            <h2>🎮 CATÁLOGO DE JUEGOS</h2>
+            <h2>🎮 JUEGOS POPULARES</h2>
             <!--<div class="linea-decorativa"></div>-->
         </div>
         <!-- catalogo de juegos -->
         <main class="grid-juegos" id="contenedor-juegos">
         </main>
-        <!-- pie de pagina -->
+        <!-- pie de pagina 
         <footer class="footer-v2">
             <a href="#" onclick="abrirTerminos()">Términos y Condiciones</a>
             <a href="https://facebook.com/groups/664921335647676" target="_blank">Facebook</a>
             <a href="https://wa.me/59178914558" target="_blank">WhatsApp</a>
         </footer>
+-->
 
         <!-- boton wa flotamnte -->
         <a href="https://wa.me/59178914558" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
@@ -114,58 +145,107 @@
     <div id="vista-formulario" class="modal-overlay hidden">
         <div class="card-v2">
             <button class="btn-cerrar-v2" onclick="cerrarFormulario()">×</button>
-            <h2 class="titulo-v2" id="titulo-formulario" style="color: #00f2ff; text-transform: uppercase;"></h2>
-            <!-- logo juego formulario -->
-            <div id="logo-juego-contenedor"></div>
 
-            <div class="seccion-paso">
-                <div class="paso-numero">1</div>
-                <label class="label-paso">ID Jugador:</label>
-                <div class="id-group-v2">
-                    <input type="text" id="id-jugador" placeholder="Ingresa tu ID">
-                    <input type="text" id="zona-jugador" placeholder="Zona" class="hidden">
+            <div class="contenido-scroll-formulario">
+                <h2 class="titulo-v2" id="titulo-formulario" style="color: #00f2ff; text-transform: uppercase;"></h2>
+                <div id="logo-juego-contenedor"></div>
+
+                <div class="seccion-paso">
+                    <div class="paso-numero">1</div>
+                    <label class="label-paso">ID Jugador:</label>
+                    <div class="id-group-v2">
+                        <input type="text" id="id-jugador" autocomplete="off" placeholder="Ingresa tu ID">
+                        <input type="text" id="zona-jugador" autocomplete="off" placeholder="Zona" class="hidden">
+                    </div>
+                    <select id="region-jugador" class="hidden">
+                        <option value="">Seleccionar Región</option>
+                        <option value="América">América</option>
+                        <option value="Europa">Europa</option>
+                        <option value="Asia">Asia</option>
+                    </select>
+                    <input type="text" id="nick-jugador" autocomplete="off" placeholder="Nickname (Opcional)">
                 </div>
-                <select id="region-jugador" class="hidden">
-                    <option value="">Seleccionar Región</option>
-                    <option value="América">América</option>
-                    <option value="Europa">Europa</option>
-                    <option value="Asia">Asia</option>
-                </select>
-                <input type="text" id="nick-jugador" placeholder="Nickname (Opcional)">
-            </div>
 
-            <div class="seccion-paso">
-                <div class="paso-numero">2</div>
-                <label class="label-paso">Paquetes:</label>
-                <div id="grid-paquetes" class="grid-paquetes"></div>
-            </div>
+                <div class="seccion-paso">
+                    <div class="paso-numero">2</div>
+                    <label class="label-paso">Paquetes:</label>
+                    <div id="grid-paquetes" class="grid-paquetes"></div>
+                </div>
 
-            <div class="seccion-paso">
-                <div class="paso-numero">3</div>
-                <label class="label-paso">Método de pago:</label>
-                <div class="pago-selector">
-
-                    <button id="btn-qr" class="btn-pago" onclick="seleccionarMetodo('QR Simple')">
-                        <span>QR</span>
-                    </button>
-
-                    <button id="btn-tigo" class="btn-pago" onclick="seleccionarMetodo('Tigo Money')">Tigo Money</button>
+                <div class="seccion-paso">
+                    <div class="paso-numero">3</div>
+                    <label class="label-paso">Método de pago:</label>
+                    <div class="pago-selector">
+                        <button id="btn-qr" class="btn-pago"
+                            onclick="seleccionarMetodo('QR Simple')"><span>QR</span></button>
+                        <button id="btn-tigo" class="btn-pago" onclick="seleccionarMetodo('Tigo Money')">Tigo
+                            Money</button>
+                    </div>
                 </div>
             </div>
-            <button class="btn-v2 btn-accion" onclick="procesarSolicitud()">COMPRAR AHORA</button>
+
+            <div class="footer-formulario-fijo footer-separado">
+                <div class="resumen-compra">
+                    <span id="resumen-paquete">Elige un paquete</span>
+                    <span id="resumen-precio">0.00</span>
+                </div>
+                <button class="btn-v2 btn-accion-fijo" onclick="procesarSolicitud()">COMPRAR AHORA</button>
+            </div>
         </div>
     </div>
     <!--xxxxxxxxxxxxxxxxxxxx-->
 
     <div id="vista-ticket" class="modal-overlay hidden">
+    <div class="card-v2">
+        <button class="btn-cerrar-v2" onclick="cerrarTicket()">×</button>
+        
+        <div class="contenido-scroll-formulario">
+            <h2 class="titulo-v2" style="color: #f3ae1a; text-transform: uppercase;">DETALLE DE COMPRA</h2>
+            
+            <div id="resumen-ticket" class="detalle-box-v2"></div>
+
+            <div id="info-pago-ticket"></div>
+
+            <div class="seccion-comprobante" style="background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px dashed #334155;">
+                <label style="color: #00f2ff; font-size: 0.8rem; display: block; margin-bottom: 10px; font-weight: bold;">
+                    ADJUNTAR COMPROBANTE DE PAGO:
+                </label>
+
+                <input type="file" id="input-comprobante" accept="image/*" onchange="mostrarVistaPrevia(event)"
+                    style="font-size: 0.7rem; color: #94a3b8; width: 100%; cursor: pointer; background: rgba(0, 0, 0, 0.4);">
+
+                <div id="contenedor-preview" style="margin-top: 15px; display: none;">
+                    <img id="img-preview" src="" alt="Vista previa"
+                        style="max-width: 100%; max-height: 250px; border-radius: 5px; border: 2px dashed #ccc">
+                    <p style="color: #00f2ff; font-size: 0.7rem; margin-top: 5px;">✨ Imagen lista para enviar</p>
+                </div>
+
+                <p id="status-carga" style="color: #ffaa00; font-size: 0.7rem; margin-top: 10px; font-weight: bold;"></p>
+            </div>
+        </div>
+
+        <div class="footer-formulario-fijo footer-centrado">
+            <button class="btn-v2 btn-whatsapp btn-accion-fijo" onclick="finalizarRecarga()" style="margin: 0 !important; width: 100% !important;">
+                 <!--
+                <svg class="wa-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-right: 8px; fill: white;">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                 -->
+                <span>SOLICITAR RECARGA</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--- 
+    <div id="vista-ticket" class="modal-overlay hidden">
         <div class="card-v2">
             <button class="btn-cerrar-v2" onclick="cerrarTicket()">×</button>
             <h2 class="titulo-v2">DETALLE DE COMPRA</h2>
             <div id="resumen-ticket" class="detalle-box-v2"></div>
+
+            div contenedor del QR o numero cel y boton
             <div id="info-pago-ticket"></div>
-
-
-
 
             <div class="seccion-comprobante"
                 style="background: #1e293b; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center;">
@@ -185,10 +265,7 @@
                 <p id="status-carga" style="color: #ffaa00; font-size: 0.7rem; margin-top: 10px;"></p>
             </div>
 
-
-
-
-            <button class="btn-v2 btn-whatsapp" onclick="enviarWA()">
+            <button class="btn-v2 btn-whatsapp" onclick="finalizarRecarga()">
                 <svg class="wa-icon" viewBox="0 0 24 24">
                     <path
                         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -197,6 +274,8 @@
             </button>
         </div>
     </div>
+
+--->
     <!--xxxxxxxxxxxxxxxxxxxx-->
 
     <div id="modal-final" class="modal-overlay hidden">
@@ -211,7 +290,6 @@
         </div>
     </div>
 
-
     <div id="modal-terminos" class="modal-overlay hidden">
         <div class="card-v2">
             <button class="btn-cerrar-v2" onclick="cerrarTerminos()">×</button>
@@ -224,38 +302,99 @@
     </div>
 
 
+    <!-- FOOTER 
+    <footer>
+        <div class="footer-content">
+             <div class="footer-logo">NOVA GAME STORE</div>  
+            <img src="img/banner1.jpg" alt="Logo" style="width: 70px;">
+            <div class="footer-links">
+                <a href="#">Contactos|</a>
+                <a href="#">|Tutoriales|</a>
+                <a href="https://facebook.com/groups/664921335647676" target="_blank">|Facebook</a>
+            </div>
+            <p>&copy; 2026 www.novagamestore.com | Recargas a toda Bolivia</p>
+        </div>
+    </footer> -->
+
+    <!-- <footer style="background: #0f172a; padding: 40px 20px; text-align: center; border-top: 1px solid #1e293b; margin-top: 50px;">
+    <div style="color: #64748b; font-size: 14px;">
+        <p>Elite Games Bolivia 🇧🇴 - Recargas Seguras 24/7</p>
+        <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">No estamos afiliados con Garena, Moonton o Hoyoverse. Todas las marcas son propiedad de sus dueños.</p>
+    </div>
+</footer> -->
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <h3>NOVA GAME STORE</h3>
+            <div class="footer-links">
+                <p>Recarga a toda Bolivia 🇧🇴</p> 
+                <p><a href="https://facebook.com/groups/664921335647676" target="_blank">Facebook</a></p>
+            </div>
+        </div>
+         <!--
+        <div class="footer-status">
+            <span class="status-dot"></span> xxx
+        </div>
+        -->
+        <div class="footer-copyright">
+            © 2026 Nova Game Store. | www.novagamestore.com
+        </div>
+    </div>
+</footer>
 
 
     <script type="module">
-        // Importar las funciones necesarias
+        // 1. Importar todas las herramientas necesarias
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // AQUÍ PEGA TU CONFIGURACIÓN (La que copiaste en el Paso 1)
+        // 2. TUS CREDENCIALES (Asegúrate de que sean las correctas de tu consola)
         const firebaseConfig = {
-            apiKey: "TU_API_KEY",
+            apiKey: "AIzaSyCocm-bkIotM4OTi2sNLzffkglHiqgJZx0",
             authDomain: "novagame024.firebaseapp.com",
-            databaseURL: "https://novagame024-default-rtdb.firebaseio.com/",
-            projectId: "tnovagame024",
-            storageBucket: "novagame024.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:abcdef"
+            databaseURL: "https://novagame024-default-rtdb.firebaseio.com",
+            projectId: "novagame024",
+            storageBucket: "novagame024.firebasestorage.app",
+            messagingSenderId: "1007162916424",
+            appId: "1:1007162916424:web:837927337c8d1d2f43a27d",
+            /*measurementId: "G-ME6GNSRT90"*/
         };
 
-        // Inicializar Firebase
+        // 3. Inicializar Firebase una sola vez
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
+        const storage = getStorage(app);
 
-        // Hacer que la función de guardar sea accesible desde tu script.js
+        // --- FUNCIÓN PARA SUBIR IMAGEN A STORAGE ---
+        window.subirArchivoFB = async function (archivo) {
+            try {
+                const nombreArchivo = `comprobantes/${Date.now()}_${archivo.name}`;
+                const referenciaStorage = sRef(storage, nombreArchivo);
+
+                // Subir el archivo
+                await uploadBytes(referenciaStorage, archivo);
+                // Obtener y devolver la URL pública
+                return await getDownloadURL(referenciaStorage);
+            } catch (error) {
+                console.error("Error en Storage:", error);
+                throw error;
+            }
+        };
+
+        // --- FUNCIÓN PARA GUARDAR PEDIDO EN DATABASE ---
         window.guardarPedidoFB = function (datos) {
             const pedidosRef = ref(database, 'pedidos');
             const nuevoPedidoRef = push(pedidosRef);
+
             return set(nuevoPedidoRef, {
                 ...datos,
                 fecha: new Date().toISOString(),
                 estado: "Pendiente"
             });
-        };;
+        };
     </script>
 
     <script src="script.js"></script>

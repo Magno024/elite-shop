@@ -5,33 +5,61 @@
     padding: 0;
 }
 
+
+/* 1. Aseguramos que la base del sitio ocupe toda la pantalla */
+html,
 body {
-    background: #0a0e1a;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. El contenedor principal (donde está tu catálogo) debe 'crecer' */
+/* Envuelve todo tu contenido (hero, carrusel, catálogo) en una etiqueta <main> si no la tienes */
+main {
+    flex: 1;
+    /* Esto empuja al footer hacia el fondo automáticamente */
+}
+
+body {
+    background: #f5f5f7;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.4;
     padding-bottom: 50px;
     /* Espacio al final */
-    background-color: #0f172a; /* Color base oscuro */
+    background-color: #0f172a;
+    /* Color base oscuro */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
-    transition: background-image 0.8s ease-in-out; /* Cambio suave de imagen */
+    background-attachment: fixed;
+    /* Mantiene el fondo quieto al hacer scroll */
+    transition: background-image 0.8s ease-in-out;
+    /* Cambio suave de imagen */
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 100% de la altura de la ventana */
 }
 
 /* Capa oscura opcional para que el texto resalte más sobre la imagen */
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     /* 0.3 hará que la imagen se vea mucho más clara */
-    background: rgba(15, 23, 42, 0.0); /* Oscurece la imagen un 70% */
+    background: rgba(15, 23, 42, 0.0);
+    /* Oscurece la imagen un 70% */
     z-index: -1;
 }
 
 /* --- CONTENEDORES --- */
 .wrapper {
-    width: 80%;
+    width: 78%;
     /* Ocupa el 80% en PC */
     max-width: 1000px;
     margin: 0 auto;
@@ -52,17 +80,24 @@ body::before {
 .hidden {
     display: none !important;
 }
-/*
-/* --- BANNER --- 
+
+
+/* --- BANNER --- */
+/* Esto evita que el banner se pegue al borde superior del navegador */
+
 .main-banner {
-    width: 100%;
-    border-radius: 15px;
+    margin-top: 80px;
+    /* Dale espacio para que no choque con la barra de estado */
+    /*position: relative;
+*/
+    border-radius: 10px;
     overflow: hidden;
-    line-height: 0;
-    margin-top: 0px;
+    width: 100%;
+    line-height: 1.5;
+    /*salto de linea en grillas de historial*/
     box-shadow: 0 5px 20px rgba(0, 242, 255, 0.2);
 }
-*/
+
 
 .banner-img {
     width: 100%;
@@ -80,7 +115,8 @@ body::before {
     font-size: 1.3rem;
     margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px; /*espacio entre letras*/
+    letter-spacing: 1px;
+    /*espacio entre letras*/
 }
 
 .titulo-seccion h2 {
@@ -90,6 +126,7 @@ body::before {
     /*margin-bottom: 0px; enpacio entre el titulo catalogo y la linea decorativa*/
     text-align: center;
 }
+
 /*
 .linea-decorativa {
     width: 150px;
@@ -115,7 +152,8 @@ body::before {
 .card-juego {
     background: #151c2c;
     border: 1px solid rgba(114, 156, 235, 0.2);
-    padding: 1px; /*marco vacio al rededor de las imagenes card*/
+    padding: 1px;
+    /*marco vacio al rededor de las imagenes card*/
     border-radius: 12px;
     text-align: center;
     cursor: pointer;
@@ -133,7 +171,8 @@ body::before {
 .card-juego img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px; /*espacio en donde esta el nombre del los juegos en cards*/
+    margin-bottom: 10px;
+    /*espacio en donde esta el nombre del los juegos en cards*/
     display: block;
 }
 
@@ -147,33 +186,130 @@ body::before {
 /* --- FORMULARIO Y PASOS --- */
 /* --- LA TARJETA (CARD V2) --- */
 /*grid de precios*/
+
 .card-v2 {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03); /* Un toque de brillo blanco muy leve */
-/*
-    background: #151c2c;
-    border: 1px solid rgba(0, 242, 255, 0.3);
-*/
+    background: #0f172a;
     border-radius: 20px;
-    padding: 20px;
+    padding-top: 40px !important;
+    /* Deja espacio fijo arriba para la X */
     width: 100%;
     max-width: 500px;
     /* Tamaño perfecto de celular en PC */
     position: relative;
+    /* Para que la X se ubique respecto a la card */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     margin: auto;
     /* Centrado absoluto */
+
+    max-height: 90vh;
+    /* Para que no se salga de la pantalla */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0 !important;
+    /* Quitamos padding abajo para la barra */
+    overflow: hidden;
+    /* Evita que el modal entero haga scroll */
 }
+
+
+/* Área que sí se desliza */
+.contenido-scroll-formulario {
+    overflow-y: auto;
+    padding: 20px;
+    flex: 1;
+    /* Ocupa el espacio disponible */
+
+    padding-right: 20px;
+    /* Separa el contenido de la barra de scroll */
+    margin-top: 0px;
+    /*espacio ente el borde superior del modal a el titulo del juego*/
+}
+
+
+/* Hacer el scroll más delgado y estético */
+.contenido-scroll-formulario::-webkit-scrollbar {
+    width: 6px;
+    /* Ancho de la barra */
+}
+
+.contenido-scroll-formulario::-webkit-scrollbar-track {
+    background: transparent;
+    /* Fondo del carril */
+}
+
+.contenido-scroll-formulario::-webkit-scrollbar-thumb {
+    background: #334155;
+    /* Color de la barra (gris oscuro) */
+    border-radius: 10px;
+    /* Bordes redondeados */
+}
+
+.contenido-scroll-formulario::-webkit-scrollbar-thumb:hover {
+    background: #2c4566;
+    /* Cambia de color al pasar el mouse */
+}
+
+
+/* La Barra Fija Inferior */
+.footer-formulario-fijo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #1a2235;
+    /* Un tono sólido para que no se vea lo de atrás */
+    border-top: 1px solid #007bff;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.resumen-compra {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#resumen-paquete {
+    font-size: 15px;
+    color: #b2bfcf;
+    font-weight: 500;
+}
+
+#resumen-precio {
+    font-size: 17px;
+    color: #f3ae1a;
+    font-weight: 500;
+}
+
+/* El botón estático */
+.btn-accion-fijo {
+    width: auto !important;
+    padding: 12px 25px !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+}
+
 
 .btn-cerrar-v2 {
     position: absolute;
     right: 15px;
     top: 15px;
-    background:none;
+    background: none;
     border: none;
     color: white;
     font-size: 28px;
     cursor: pointer;
+    /*nuevo codigo agregado*/
+    z-index: 10;
+    /* Siempre por encima del scroll */
+    background: rgba(15, 23, 42, 0.8);
+    /* Fondo semi-transparente para que no se pierda */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .seccion-paso {
@@ -182,7 +318,8 @@ body::before {
     margin-bottom: 25px;
 }
 
-.paso-numero {/*circulos de los numeros - formularios*/
+.paso-numero {
+    /*circulos de los numeros - formularios*/
     position: absolute;
     left: 0;
     top: 0;
@@ -200,14 +337,15 @@ body::before {
 /* 5. Grilla de paquetes dentro del formulario */
 .grid-paquetes {
     display: grid;
-     /* 2 columnas para los precios */
+    /* 2 columnas para los precios */
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 /*fondo recuadro de precios*/
 .pack-box {
+    transition: all 0.3s ease; /* Esto hará que el brillo aparezca suavemente */
     background: #0a0e1a;
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px;
@@ -219,13 +357,14 @@ body::before {
 
 /* Efecto hover (mientras no esté activo) */
 .pack-box:hover {
-  border-color: #007bff;
-  background-color: #0a0e1a;
-  transform: translateY(-2px);
+    border-color: #007bff;
+    background-color: #0a0e1a;
+    transform: translateY(-2px);
 }
 
 /* Esta es la clase que el JS activa al hacer clic */
-.pack-box.selected { /*de momento no hace nada porque esta usuando el efecto cristal*/
+.pack-box.selected {
+    /*de momento no hace nada porque esta usuando el efecto cristal*/
     border-color: #007bff;
     background: rgba(0, 242, 255, 0.15);
     box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
@@ -238,35 +377,37 @@ body::before {
     margin-top: 10px;
 }
 
-.btn-pago { /*boton QR o Tigo money, efecto contrala el de cristal*/
-  flex: 1;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 24px;
-  font-size: 12px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  background-color: #0a0e1a;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  outline: none;
+.btn-pago {
+    /*boton QR o Tigo money, efecto contrala el de cristal*/
+    flex: 1;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #0a0e1a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 /* Efecto hover (mientras no esté activo) */
 .btn-pago:hover {
-  border-color: #007bff;
-  background-color: #0a0e1a;
-  transform: translateY(-2px);
+    border-color: #007bff;
+    background-color: #0a0e1a;
+    transform: translateY(-2px);
 }
 
 .btn-pago.selected {
-  border-color: #007bff;
-  /*background-color: ##0a0e1a;*/
-  box-shadow: 0 0 10px rgba(0, 86, 179, 0.2);
-  transform: translateY(0); /* Se queda pegado al suelo al seleccionarse */
+    border-color: #007bff;
+    /*background-color: ##0a0e1a;*/
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.2);
+    transform: translateY(0);
+    /* Se queda pegado al suelo al seleccionarse */
 }
 
 /* --- FILAS DE INFORMACIÓN EN EL TICKET detalle de compra--- */
@@ -284,17 +425,18 @@ body::before {
 
 
 /* 6. Inputs y Selects */
-/*marco contenedor boton seleccionar archivo*/
+/*marco contenedor boton seleccionar archivo y datos jugador, id y nick*/
 input,
 select {
     width: 100%;
-    background: #000;
+    background: #0a0e1a;
     border: 1px solid #334155;
     color: white;
     padding: 12px;
     border-radius: 10px;
     margin-top: 5px;
 }
+
 
 /* --- BOTONES DE FORMULARIO--- */
 /* --- BOTONES DE ACCIÓN (ESTILO REDONDEADO) --- */
@@ -311,6 +453,7 @@ select {
     margin-top: 20px;
     transition: 0.3s;
 }
+
 /*boton ????*/
 .btn-accion {
     background: #00f2ff;
@@ -322,7 +465,7 @@ select {
 /* --- BOTÓN WHATSAPP (TAMAÑO CONTROLADO) --- */
 .btn-whatsapp {
     background: #05976a;
-    color: white;
+    color: #000;
     max-width: 300px;
     margin: 20px auto 0;
     display: flex;
@@ -369,6 +512,8 @@ select {
 }
 
 /* --- BOTONES MINI (COPIAR Y DESCARGAR) --- */
+
+/* Tu estilo original */
 .btn-copiar-mini {
     background: #00f2ff;
     color: #000;
@@ -381,6 +526,25 @@ select {
     margin-top: 10px;
 }
 
+/* Estilo para el mensaje de éxito */
+.aviso-temporal {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+.aviso-temporal.ocultar {
+    opacity: 0;
+}
+
 /* --- CONTENEDORES DE VISTA (FORMULARIO, TICKET, MODAL FINAL) --- */
 
 #vista-formulario,
@@ -391,27 +555,27 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    
+
     /* 1. Bajamos la opacidad del fondo (de 0.95 a 0.4) para ver la imagen de atrás */
-    background: rgba(10, 14, 26, 0.4); 
-    
+    background: rgba(10, 14, 26, 0.4);
+
     /* 2. ACTIVAMOS EL CRISTAL: Todo lo que esté detrás se verá borroso */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 999;
     padding: 20px;
     overflow-y: auto;
-    
+
     /* 3. Animación suave al aparecer */
     transition: all 0.4s ease;
 }
 
 
-/* --- FOOTER --- */
+/* --- FOOTER --- 
 .footer-v2 {
     display: flex;
     justify-content: center;
@@ -425,14 +589,17 @@ select {
     color: #c7d1df;
     text-decoration: none;
 }
+*/
 
 /*BOTON WHATSAPP FLOTANTE */
 .whatsapp-float {
     position: fixed;
     width: 50px;
     height: 50px;
-    bottom: 40px; /*distancia de la base hacia arriba*/
-    right: 40px; /*distancia de la derecha hacia la izquierda*/
+    bottom: 30px;
+    /*distancia de la base hacia arriba*/
+    right: 40px;
+    /*distancia de la derecha hacia la izquierda*/
     background-color: #25d366;
     color: #FFF;
     border-radius: 50%;
@@ -447,62 +614,96 @@ select {
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1); /* Efecto de agrandado al pasar el mouse */
+    transform: scale(1.1);
+    /* Efecto de agrandado al pasar el mouse */
     background-color: #20ba5a;
 }
 
 .whatsapp-float img {
-    width: 30px; /*tamaño logo whatsapp*/
+    width: 30px;
+    /*tamaño logo whatsapp*/
     height: 30px;
 }
 
 
 /* Estilo del botón de 3 líneas */
-.menu-btn {
+.menu-btn-new {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 4px;
     width: 43px;
     height: 43px;
     padding: 13px;
     z-index: 999;
     position: relative;
-    margin-top: 15px;
+    margin-top: 1px;
     border-radius: 10px;
-    background-color: #242e49; /* color marco del  boton menu */
+    background-color: #242e49;
+    /* color marco del  boton menu */
     border: none;
 }
 
-.menu-btn span {
+.menu-btn-new span {
+    display: block;
     width: 100%;
     height: 3px;
-    background-color: #faf7f7; /*color de las 3 lineas boton menu deslegable*/
+    background-color: #faf7f7;
+    /*color de las 3 lineas boton menu deslegable*/
     border-radius: 2px;
 }
+
+
+/* Estilo para las 3 líneas del menú 
+.menu-btn-new {
+    width: 25px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.menu-btn-new span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+*/
+
+
 
 /* Estilo del Menú Lateral */
 .side-menu {
     position: fixed;
     top: 0;
-    left: -320px; /* Escondido a la izquierda */
+    left: -320px;
+    /* Escondido a la izquierda */
     width: 250px;
     height: 100%;
-    background-color: #0a0e1a; /*fondo del menu lateral*/
+    background-color: #0a0e1a;
+    /*fondo del menu lateral*/
     color: white;
-    transition: 0.3s; /* Velocidad del despliegue */
+    transition: 0.3s;
+    /* Velocidad del despliegue */
     z-index: 1001;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     padding-top: 60px;
 }
 
-.menu-content h2{ /*titulo nova game */
+.menu-content h2 {
+    /*titulo nova game */
     text-align: center;
     cursor: pointer;
 }
 
 .side-menu.active {
-    left: 0; /* Se muestra */
+    left: 0;
+    /* Se muestra */
 }
 
 /* Estilo de los textos enlaces del menú */
@@ -522,11 +723,16 @@ select {
     border-color: #f3ae1a;
 }
 
-.icon { margin-right: 10px; }
+.icon {
+    margin-right: 10px;
+}
 
 
 /* Esto hace que el cambio de color sea fluido */
-#titulo-formulario, .pack-box, #status-carga, #img-preview {
+#titulo-formulario,
+.pack-box,
+#status-carga,
+#img-preview {
     transition: all 0.4s ease-in-out;
 }
 
@@ -541,13 +747,17 @@ select {
 #overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
 
-#overlay.active { display: block; }
+#overlay.active {
+    display: block;
+}
 
 /* --- RESPONSIVE (MÓVIL) --- */
 @media (max-width: 768px) {
@@ -575,25 +785,32 @@ select {
 .carrusel-contenedor {
     position: relative;
     width: 100%;
-    max-width: 1000px; /* Ancho máximo para que no se vea gigante en PC */
-    height: 200px; /* Altura del banner en móvil */
-    margin: 20px auto;
-    overflow: hidden; /* Esconde los slides que no se ven */
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 1000px;
+    /* Ancho máximo para que no se vea gigante en PC */
+    height: 200px;
+    /* Altura del banner en móvil */
+    margin: 0px auto;
+    overflow: hidden;
+    /* Esconde los slides que no se ven */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* En PC lo hacemos más alto */
 @media (min-width: 768px) {
-    .carrusel-contenedor { height: 350px; }
+    .carrusel-contenedor {
+        height: 350px;
+    }
 }
 
 /* La "pista" donde están todos los slides alineados */
 .carrusel-track {
     display: flex;
-    width: 300%; /* 100% por cada slide (tenemos 3) */
+    width: 300%;
+    /* 100% por cada slide (tenemos 3) */
     height: 100%;
-    transition: transform 0.8s ease-in-out; /* Velocidad del cambio */
+    transition: transform 0.8s ease-in-out;
+    /* Velocidad del cambio */
 }
 
 /* Cada Slide individual */
@@ -605,7 +822,8 @@ select {
     position: relative;
     cursor: pointer;
     display: flex;
-    align-items: center; /* Centrar contenido verticalmente */
+    align-items: center;
+    /* Centrar contenido verticalmente */
     padding: 30px;
 }
 
@@ -613,13 +831,17 @@ select {
 .carrusel-slide::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(90deg, rgba(10, 14, 26, 0.9) 0%, rgba(10, 14, 26, 0.2) 60%);
 }
 
 /* Información del Banner (Texto y Botón) */
 .carrusel-info {
-    position: relative; /* Para quedar sobre la superposición oscura */
+    position: relative;
+    /* Para quedar sobre la superposición oscura */
     z-index: 2;
     color: #fff;
     max-width: 70%;
@@ -678,7 +900,7 @@ select {
 .punto {
     width: 10px;
     height: 10px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -688,3 +910,356 @@ select {
     background: #00f2ff;
     box-shadow: 0 0 10px #00f2ff;
 }
+
+
+/* Cambia #2b2b2b por tu color de fondo oscuro real */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #2b2b2b inset !important;
+    -webkit-text-fill-color: white !important;
+    /* Fuerza el color de letra */
+}
+
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white !important;
+}
+
+/*HISTORIAL*/
+/*
+.grid-historial {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+*/
+/*
+.card-historial {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+*/
+
+/*boton pendiente*/
+.estado-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Colores para los estados */
+.pendiente {
+    background: rgba(255, 170, 0, 0.2);
+    color: #ffaa00;
+    border: 1px solid #ffaa00;
+}
+
+.entregado {
+    /*background: rgba(0, 255, 150, 0.2);
+    border: 1px solid #00ff96;*/
+    color: #09b66e;
+    font-size: small;
+}
+
+
+/*
+.modal-flotante {
+    position: fixed;
+    top: 70px;
+    /* Debajo del header 
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+*/
+.modal-flotante {
+    position: fixed;
+    top: 70px;
+    /* Justo debajo de la barra negra que creamos arriba */
+    right: 20px;
+    width: 90%;
+    /* En móviles casi todo el ancho */
+    max-width: 350px;
+    background: #1a1a2e;
+    /* Un azul muy oscuro sólido */
+    border: 1px solid #b1b3b3;
+    /* Borde neón para que se note */
+    border-radius: 15px;
+    z-index: 9999;
+    /* El número más alto para que esté por encima de TODO */
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+    padding: 10px;
+}
+
+
+.ticket-historial {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fila-superior,
+.fila-media,
+.fila-inferior {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.nick-info {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.juego-nombre {
+    color: #1dd2db;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.pedido-id {
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+.paquete-info {
+    font-size: 0.85rem;
+    color: #fff;
+}
+
+.precio-info {
+    color: #f8cb39da;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.fecha-info {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+
+.id-cliente-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    display: block;
+    margin-top: 2px;
+}
+
+.info-cliente {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/* Ajuste de la barra de controles para que no se pierda */
+.header-controls {
+    position: fixed;
+    /* Cambiado de absolute a fixed para que siempre esté visible */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background: rgba(10, 10, 15, 0.8);
+    /* Fondo semi-transparente para que se vea el menú */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+
+/* Estilo para el encabezado del historial */
+.header-modal {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/*titulo historial*/
+.header-modal h4 {
+    margin: 0;
+    color: #fafcfc;
+    font-size: 0.9rem;
+}
+
+/*la x de historial*/
+.header-modal button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+/* Botón de historial el icono papel*/
+.btn-historial-flotante {
+    position: relative;
+    /* Para que respete el z-index */
+    z-index: 1001;
+    /* Un nivel más arriba que la barra negra */
+    font-size: 1.6rem;
+    color: #00f2ff;
+    /* Color neón para que lo veas rápido */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-historial-flotante:hover {
+    transform: scale(1.1);
+    color: #00f2ff;
+}
+
+/* FOOTER */
+footer {
+    background: rgba(10, 10, 15, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 400px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/*nuevo css para el footer 24/7*/
+.main-footer {
+    background: linear-gradient(to bottom, #111827, #030712);
+    /* Degradado oscuro */
+    border-top: 1px solid #1e293b;
+    padding: 3rem 1rem;
+    /*40px 20px*/
+    margin-top: 400px;
+    color: #94a3b8;
+    text-align: center;
+
+    width: 100%;
+}
+
+.status-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    /*box-shadow: 0 0 8px #10b981;*/
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.footer-logo {
+    filter: grayscale(1) brightness(0.8);
+    /* Lo hace ver más sobrio */
+    margin-bottom: 1.5rem;
+    transition: 0.3s;
+}
+
+.footer-logo:hover {
+    filter: grayscale(0) brightness(1);
+}
+
+
+
+
+/* Cambiamos .ticket-cuerpo por #resumen-ticket */
+#resumen-ticket {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px dashed #334155;
+    color: #b1b4b4;
+    /* Asegura que el texto sea legible */
+}
+
+/* Las líneas internas sí pueden ser clases */
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Una línea sutil divisoria */
+    padding-bottom: 4px;
+}
+
+.ticket-item code {
+    background: #0f172a;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Asegura que el footer del modal use Flexbox para centrar */
+.footer-formulario-fijo {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    padding: 15px 20px;
+    background: #1a2235;
+    border-top: 2px solid #334155;
+    width: 100%;
+    box-sizing: border-box; /* Evita que el padding ensanche el modal */
+}
+
+/* MODAL 1: Paquete a la izquierda, Botón a la derecha */
+.footer-separado {
+    justify-content: space-between; /* Este es el secreto */
+}
+
+/* MODAL 2: Todo al centro */
+.footer-centrado {
+    justify-content: center;
+}
+
+/* Fuerza al botón a no pegarse a la izquierda */
+.btn-whatsapp.btn-accion-fijo {
+    margin: 0 auto !important; /* Margen automático a los lados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px; /* Ancho mínimo para que se vea importante */
+
+    width: auto !important;
+    min-width: 140px;
+}
+

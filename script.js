@@ -9,10 +9,10 @@ const DATOS_PAGO = {
 };
 //imagnes y nombres de catalogo de juegos
 const JUEGOS = [
-    { id: "ff", nombre: "FREE FIRE", img: "img/ff.png", color: '#00b2ff', bg: 'img/fff.jpg', paquetes: [{ n: "100+10 💎", p: "13 Bs" }, { n: "310+31 💎", p: "38 Bs" }, { n: "520+52 💎", p: "55 Bs" }, { n: "1060+106 💎", p: "100 Bs" }, { n: "2180+218 💎", p: "195 Bs" }, { n: "5600+560 💎", p: "460 Bs" }, { n: "Tarjeta Basica", p: "6 Bs" }, { n: "Tarjeta Semanal", p: "20 Bs" }, { n: "Tarjeta Mensual", p: "85 Bs" }] },
-    { id: "ml", nombre: "MOBILE LEGENDS", img: "img/mlbb.png", color: '#f3ae1a', bg: 'img/fml.png', requiereZona: true, paquetes: [{ n: "50 💎", p: "10 Bs" }, { n: "78+8 💎", p: "18 Bs" }, { n: "156+16 💎", p: "30 Bs" }, { n: "234+23 💎", p: "45 Bs" }, { n: "625+81 💎", p: "110 Bs" }, { n: "1860+335 💎", p: "320 Bs" }, { n: "399+589 💎", p: "510 Bs" }, { n: "Pase Crepúsculo", p: "90 Bs" }] },
-    { id: "gs", nombre: "GENSHIN IMPACT", img: "img/gs.png", color: '#bd28ce', bg: 'img/fml.png', requiereRegion: true, paquetes: [{ n: "60 🌙", p: "15 Bs" }, { n: "120 🌙", p: "30 Bs" }, { n: "300+30 🌙", p: "70 Bs" }, { n: "600+60 🌙", p: "140 Bs" }, { n: "980+110 🌙", p: "180 Bs" }, { n: "1980+260 🌙", p: "360 Bs" }, { n: "3280+600 🌙", p: "550 Bs" }, { n: "Bendición Lunar", p: "65 Bs" }] },
-    { id: "pg", nombre: "PUBG MOBILE", img: "img/pubg.jpg", color: '#0a9b9b', bg: 'img/fml.png', paquetes: [{ n: "60 💵", p: "15 Bs" }, { n: "120 💵", p: "30 Bs" }, { n: "300+25 💵", p: "80 Bs" }, { n: "600+60 💵", p: "115 Bs" }, { n: "900+85 💵", p: "240 Bs" }, { n: "1500+300 💵", p: "300 Bs" }] },
+    { id: "ff", nombre: "FREE FIRE", img: "img/ff.png", color: '#00b2ff', bg: 'img/fff.jpg', paquetes: [{ n: "100+10 💎", p: "12 Bs" }, { n: "310+31 💎", p: "35 Bs" }, { n: "520+52 💎", p: "50 Bs" }, { n: "1060+106 💎", p: "90 Bs" }, { n: "2180+218 💎", p: "175 Bs" }, { n: "5600+560 💎", p: "420 Bs" }, { n: "Semanal Basica", p: "6 Bs" }, { n: "Tarjeta Semanal", p: "20 Bs" }, { n: "Tarjeta Mensual", p: "85 Bs" }] },
+    { id: "ml", nombre: "MOBILE LEGENDS", img: "img/mlbb.png", color: '#f3ae1a', bg: 'img/fml.png', requiereZona: true, paquetes: [{ n: "50 💎", p: "10 Bs" }, { n: "78+8 💎", p: "16 Bs" }, { n: "156+16 💎", p: "30 Bs" }, { n: "234+23 💎", p: "40 Bs" }, { n: "625+81 💎", p: "110 Bs" }, { n: "1860+335 💎", p: "295 Bs" }, { n: "3099+589 💎", p: "495 Bs" }, { n: "Pase Semanal", p: "20 Bs" }, { n: "Pase Crepuscular", p: "90 Bs" }] },
+    { id: "gs", nombre: "GENSHIN IMPACT", img: "img/gs.png", color: '#bd28ce', bg: 'img/fml.png', requiereRegion: true, paquetes: [{ n: "60 💠", p: "15 Bs" }, { n: "300+30 💠", p: "50 Bs" }, { n: "980+110 💠", p: "125 Bs" }, { n: "1980+260 💠", p: "250 Bs" }, { n: "3280+600 💠", p: "410 Bs" }, { n: "Bendición Lunar 🌙", p: "50 Bs" }] },
+    { id: "pg", nombre: "PUBG MOBILE", img: "img/pubg.jpg", color: '#0a9b9b', bg: 'img/fml.png', paquetes: [{ n: "60 💵", p: "15 Bs" }, { n: "300+25 💵", p: "60 Bs" }, { n: "600+60 💵", p: "110 Bs" }, { n: "1500+300 💵", p: "260 Bs" }] },
     { id: "bl", nombre: "BLOOD STRIKE", img: "img/blood.jpg", color: '#f30f22', bg: 'img/fml.png', paquetes: [{ n: "100+5 🧈", p: "10 Bs" }, { n: "300+20 🧈", p: "28 Bs" }, { n: "500+40 🧈", p: "45 Bs" }, { n: "1000+100 🧈", p: "85 Bs" }, { n: "2000+260 🧈", p: "165 Bs" }, { n: "5000+800 🧈", p: "390 Bs" }] }
 ];
 
@@ -33,13 +33,12 @@ function abrirFormulario(id) {
 
     // Extraemos el color del juego o usamos el cian por defecto
     const colorPrimario = sel.juego.color || '#05d2dd';
-
-/*
-// 1. CAMBIAR LA IMAGEN DE FONDO DEL BODY, efecto cristal
-    if (sel.juego.bg) {
-        document.body.style.backgroundImage = `url('${sel.juego.bg}')`;
-    }
-*/
+    /*
+        // 1. CAMBIAR LA IMAGEN DE FONDO DEL BODY, efecto cristal
+        if (sel.juego.bg) {
+            document.body.style.backgroundImage = `url('${sel.juego.bg}')`;
+        }
+    */
     // 1. Cambiar color del Título
     const titulo = document.getElementById("titulo-formulario");
 
@@ -64,17 +63,18 @@ function abrirFormulario(id) {
     document.getElementById("logo-juego-contenedor").innerHTML = `
         <img src="${sel.juego.img}" style="width:70px; display:block; margin: 0 auto 15px; border-radius:10px; border: 0px solid ${colorPrimario};">
     `;
-
+    //muestra la imagen en la vista de los paquetes
     document.getElementById("logo-juego-contenedor").innerHTML = `<img src="${sel.juego.img}" style="width:70px; display:block; margin: 0 auto 15px; border-radius:10px;">`;
+    //
     document.getElementById("zona-jugador").classList.toggle("hidden", !sel.juego.requiereZona);
     document.getElementById("region-jugador").classList.toggle("hidden", !sel.juego.requiereRegion);
 
-    // 4. Generar paquetes con el color del juego
+    // 4. Generar paquetes y precios con el color del juego
     const pGrid = document.getElementById("grid-paquetes");
     pGrid.innerHTML = sel.juego.paquetes.map((p, i) => `
         <div class="pack-box" id="p-${i}" onclick="seleccionarPaquete(${i})" style="border-color: ${colorPrimario}44;">
-            <div style="font-size:13px; color: #fff;">${p.n}</div>
-            <div style="color:${colorPrimario}; font-weight:bold">${p.p}</div>
+            <div style="font-size:15px; color: #fff;">${p.n}</div>
+            <div style="color:${colorPrimario}; font-size:14px; font-weight:bold">${p.p}</div>
         </div>
     `).join('');
 
@@ -137,12 +137,47 @@ function abrirFormulario(id) {
     history.pushState({ paso: "formulario" }, "Formulario", "#formulario");
 }
 
-
+/*
 function seleccionarPaquete(idx) {
     sel.paquete = sel.juego.paquetes[idx];
     document.querySelectorAll(".pack-box").forEach(el => el.classList.remove("selected"));
     document.getElementById(`p-${idx}`).classList.add("selected");
 }
+*/
+
+window.seleccionarPaquete = (idx) => {
+    sel.paquete = sel.juego.paquetes[idx];
+
+    const paquetes = document.querySelectorAll(".pack-box");
+    
+    paquetes.forEach((card, i) => {
+        if (i === idx) {
+            const colorJuego = sel.juego.color || "#00f2ff";
+            
+            // EFECTO DE RESPLANDOR (Glow)
+            card.style.borderColor = colorJuego;
+            // Aplicamos una sombra externa difuminada con el color del juego
+            card.style.boxShadow = `0 0 15px ${colorJuego}88, inset 0 0 10px ${colorJuego}33`;
+            card.style.backgroundColor = `${colorJuego}15`; // Fondo sutil (15% opacidad)
+            card.style.transform = "scale(1.03)"; // Un pequeño salto visual
+            card.classList.add("seleccionado");
+        } else {
+            // RESET
+            card.style.borderColor = "#334155"; 
+            card.style.boxShadow = "none";
+            card.style.backgroundColor = "transparent";
+            card.style.transform = "scale(1)";
+            card.classList.remove("seleccionado");
+        }
+    });
+
+    const txtPack = document.getElementById("resumen-paquete");
+    const txtPrice = document.getElementById("resumen-precio");
+    if(txtPack && txtPrice) {
+        txtPack.innerText = sel.paquete.n;
+        txtPrice.innerText = sel.paquete.p;
+    }
+};
 
 function seleccionarMetodo(m) {
     sel.metodo = m;
@@ -166,12 +201,12 @@ function procesarSolicitud() {
 
     // RESUMEN EN PANTALLA
     document.getElementById("resumen-ticket").innerHTML = `
-        <p><b>Juego:</b> ${sel.juego.nombre}</p>
-        <p><b>ID Usuario:</b> ${sel.id} ${sel.extra}</p>
-        <p><b>Nickname:</b> ${sel.nick}</p>
-        <p><b>Paquete:</b> ${sel.paquete.n}</p>
-        <p><b>Método de Pago:</b> ${sel.metodo}</p>
-        <h3 style="color:#00f2ff; margin-top:10px;">TOTAL: ${sel.paquete.p}</h3>
+        <div class="ticket-item"><span>Juego:</span> <code>${sel.juego.nombre}</code></div>
+        <div class="ticket-item"><span>ID:</span> <code>${sel.id} ${sel.extra}</code></div>
+        <div class="ticket-item"><span>Nickname:</span> <code>${sel.nick}</code></div>
+        <div class="ticket-item"><span>Paquete:</span> <code>${sel.paquete.n}</code></div>
+        <div class="ticket-item"><span>Método de Pago:</span> <code>${sel.metodo}</code></div>
+        <div class="ticket-item"><span><h3>TOTAL:</h3></span> <code><h3>${sel.paquete.p}</h3></code></div>
     `;
 
     mostrarInfoPago();
@@ -179,26 +214,26 @@ function procesarSolicitud() {
 
 function mostrarInfoPago() {
     const info = document.getElementById("info-pago-ticket");
+    // Asumiendo que 'sel' viene de tu lógica previa
     if (sel.metodo === "Tigo Money") {
         info.innerHTML = `
-            <div class="detalle-box-v2">
-                <p style="font-size:13px; opacity:0.7; 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Transferir a Tigo Money:</p>
-                <div class="pago-row">
-                    <span>${DATOS_PAGO.numero}</span>
-                    <button class="btn-copiar-mini" onclick="copiar()">COPIAR</button>
-                </div>
-                <p style="font-size:13px; margin-top:5px; opacity:0.7; 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Titular: ${DATOS_PAGO.titular}</p>
-            </div>`;
+        <div class="detalle-box-v2">
+            <p style="font-size:13px; opacity:0.7;">Transferir a Tigo Money:</p>
+            <div class="pago-row">
+                <span>${DATOS_PAGO.numero}</span>
+                <button class="btn-copiar-mini" onclick="copiar()">COPIAR</button>
+            </div>
+            <p style="font-size:13px; margin-top:5px; opacity:0.7;">Titular: ${DATOS_PAGO.titular}</p>
+        </div>`;
     } else {
         info.innerHTML = `
-            <div class="detalle-box-v2" style="text-align:center">
-                <p style="font-size:13px; opacity:0.7">Escanea el QR de Pago:</p>
-                <img src="${DATOS_PAGO.qr}" style="width:220px; margin:10px 0; border:2px solid white; border-radius:10px;">              
-                <p style="font-size:13px; margin-top:3px; opacity:0.7; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Titular: ${DATOS_PAGO.titular}</p>
-                <button class="btn-copiar-mini" onclick="window.open('${DATOS_PAGO.qr}')">DESCARGAR QR</button>
-            </div>`;
+        <div class="detalle-box-v2" style="text-align:center">
+            <p style="font-size:13px; opacity:0.7">Escanea el QR y realiza el Pago:</p>
+            <img src="${DATOS_PAGO.qr}" style="width:220px; margin:10px 0; border:2px solid white; border-radius:10px;">
+            <p style="font-size:13px; margin-top:3px; opacity:0.7;">Titular: ${DATOS_PAGO.titular}</p>
+            <button class="btn-copiar-mini" onclick="descargarQR()">DESCARGAR QR</button>
+        </div>`;
     }
-
 
     const colorJuego = sel.juego.color || '#00f2ff';
     const vistaTicket = document.getElementById("vista-ticket");
@@ -206,9 +241,14 @@ function mostrarInfoPago() {
     // Cambiar el borde superior del ticket o de la tarjeta
     if (vistaTicket) {
         vistaTicket.style.borderTop = `5px solid ${colorJuego}`;
-        // Si tienes un título dentro del ticket:
+
+        // título detalle compra del ticket:
         const tituloTicket = vistaTicket.querySelector('h2');
         if (tituloTicket) tituloTicket.style.color = colorJuego;
+
+        // total del ticket:
+        const totalTicket = vistaTicket.querySelector('h3');
+        if (totalTicket) totalTicket.style.color = colorJuego;
     }
 
     // El botón de "Enviar por WhatsApp" también debe combinar
@@ -217,7 +257,7 @@ function mostrarInfoPago() {
         btnWhatsApp.style.backgroundColor = colorJuego;
     }
 
-      // El botón de "copiar mini" también debe combinar
+    // El botón de "copiar mini" también debe combinar
     const btncopiarmini = document.querySelector(".btn-copiar-mini");
     if (btncopiarmini) {
         btncopiarmini.style.backgroundColor = colorJuego;
@@ -227,6 +267,42 @@ function mostrarInfoPago() {
     // OTRO PASO EN EL HISTORIAL:
     history.pushState({ paso: "ticket" }, "Ticket", "#ticket");
 }
+
+// Función para copiar el número al portapapeles
+function copiar() {
+    navigator.clipboard.writeText(DATOS_PAGO.numero).then(() => {
+        mostrarNotificacion("¡Número copiado!");
+    });
+}
+
+
+// Función para descargar el QR
+function descargarQR() {
+    const link = document.createElement('a');
+    link.href = DATOS_PAGO.qr;
+    link.download = 'QR_Pago.png'; // Nombre con el que se guardará
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    mostrarNotificacion("¡QR descargado con éxito!");
+}
+
+// Función para mostrar el mensaje temporal
+function mostrarNotificacion(mensaje) {
+    // Creamos un pequeño elemento flotante
+    const aviso = document.createElement("div");
+    aviso.textContent = mensaje;
+    aviso.className = "aviso-temporal";
+    document.body.appendChild(aviso);
+
+    // Desaparece después de 2 segundos
+    setTimeout(() => {
+        aviso.classList.add("ocultar");
+        setTimeout(() => aviso.remove(), 500);
+    }, 2000);
+}
+
 
 // 1. Función para mostrar la imagen apenas se selecciona
 function mostrarVistaPrevia(event) {
@@ -244,79 +320,210 @@ function mostrarVistaPrevia(event) {
     }
 }
 
-// 2. Función de Envío Unificada (Subida + WhatsApp)
-async function enviarWA() {
+async function finalizarRecarga() {
     const fileInput = document.getElementById('input-comprobante');
     const status = document.getElementById('status-carga');
+    const btnEnvio = document.querySelector(".btn-enviar-wa");
 
-    // Validación: ¿Hay una imagen seleccionada?
     if (!fileInput.files[0]) {
         alert("⚠️ Por favor, selecciona la foto de tu comprobante antes de enviar.");
         return;
     }
 
-    // Bloqueamos el proceso para mostrar que está trabajando
-    status.innerText = "⏳ Procesando pago y enviando...";
-    status.style.color = "#ffaa00";
+    status.innerText = "⏳ Subiendo comprobante y registrando...";
+    status.style.color = "#f3ae1a";
+    if (btnEnvio) btnEnvio.disabled = true;
 
     try {
-        // --- PASO A: Subir a ImgBB ---
-        const formData = new FormData();
-        formData.append("image", fileInput.files[0]);
+        // --- PASO A: Subir a Firebase Storage ---
+        const linkFoto = await window.subirArchivoFB(fileInput.files[0]);
 
-        const apiKey = '931f3087d3af8ac699d28ca6d839c02e'; // Reemplaza con tu llave real
-        const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-            method: "POST",
-            body: formData
-        });
-        const data = await response.json();
+        // --- PASO B: Preparar los datos ---
+        const zonaML = document.getElementById("zona-jugador") ? document.getElementById("zona-jugador").value : null;
+        const regionGenshin = document.getElementById("region-jugador") ? document.getElementById("region-jugador").value : null;
 
-        if (!data.success) throw new Error("Error al subir imagen");
-
-        const linkFoto = data.data.url;
-
-        // --- PASO B: Guardar en Firebase (Opcional) ---
         const datosParaDB = {
             juego: sel.juego.nombre,
             id_jugador: sel.id,
+            id_zona: zonaML,
+            region: regionGenshin,
             nickname: sel.nick,
             paquete: sel.paquete.n,
             precio: sel.paquete.p,
+            metodo: sel.metodo,
             comprobante: linkFoto,
-            fecha: new Date().toLocaleString()
+            fecha: new Date().toLocaleString(),
+            estado: "Pendiente",
+            idPedido: "REC-" + Math.random().toString(36).substr(2, 6).toUpperCase()
         };
-        if (window.guardarPedidoFB) await window.guardarPedidoFB(datosParaDB);
 
-        // --- PASO C: Construir Mensaje y Abrir WhatsApp ---
-        const mensaje = `*SOLICITUD DE RECARGA*%0A` +
-            `*Juego:* ${sel.juego.nombre}%0A` +
-            `*ID:* ${sel.id}%0A` +
-            `*Nick:* ${sel.nick}%0A` +
-            `*Paquete:* ${sel.paquete.n}%0A` +
-            `*Total:* ${sel.paquete.p}%0A%0A` +
-            `*Comprobante:* ${linkFoto}%0A%0A` +
-            `_Gracias por tu preferencia, en pocos minutos tu recarga estará lista._`;
+        // Guardar en Firebase Database (Si la función existe)
+        if (window.guardarPedidoFB) {
+            await window.guardarPedidoFB(datosParaDB);
+        }
 
-        const url = `https://wa.me/${DATOS_PAGO.whatsappAdmin}?text=${mensaje}`;
-        window.open(url, '_blank');
+        // --- PASO C: Notificación a Telegram ---
+        // Usamos los mismos datos que preparamos para la DB
+        await enviarNotificacionTelegram(datosParaDB);
 
         // --- PASO D: Interfaz Final ---
-        status.innerText = "✅ ¡Enviado!";
-        // Ocultar el ticket y mostrar el modal de éxito
+        status.innerText = "✅ ¡Recarga solicitada con éxito!";
         document.getElementById("vista-ticket").classList.add("hidden");
         document.getElementById("modal-final").classList.remove("hidden");
 
-        // IMPORTANTE: Resetear el link para la siguiente vuelta
-        window.linkComprobante = "No subido";
-
+        if (typeof guardarEnHistorialLocal === "function") {
+            guardarEnHistorialLocal(datosParaDB);
+        }
 
     } catch (error) {
-        // Si hay error, hay que devolver el botón a su estado normal
         console.error(error);
-        status.innerText = "❌ Error al enviar. Intenta de nuevo.";
-        alert("Hubo un problema al procesar la imagen. Revisa tu conexión.");
+        status.innerText = "❌ Error al procesar.";
+        if (btnEnvio) btnEnvio.disabled = false;
+        alert("Hubo un problema. Intenta de nuevo.");
     }
 }
+/*
+async function finalizarRecarga() {
+    const fileInput = document.getElementById('input-comprobante');
+    const status = document.getElementById('status-carga');
+    const btnEnvio = document.querySelector(".btn-enviar-wa"); // Referencia al botón
+
+    // 1. Validaciones
+    if (!fileInput.files[0]) {
+        alert("⚠️ Por favor, selecciona la foto de tu comprobante antes de enviar.");
+        return;
+    }
+
+    // 2. Bloqueo de interfaz para evitar doble clic
+    status.innerText = "⏳ Subiendo comprobante y registrando...";
+    status.style.color = "#f3ae1a";
+    if (btnEnvio) btnEnvio.disabled = true;
+
+    try {
+        // --- PASO A: Subir a Firebase Storage (Adiós ImgBB) ---
+        // Usamos la función que creamos en el HTML unificado
+        const linkFoto = await window.subirArchivoFB(fileInput.files[0]);
+
+        // --- PASO B: Guardar en Firebase Realtime Database ---
+        // Capturar campos extra si existen
+        const zonaML = document.getElementById("zona-jugador") ? document.getElementById("zona-jugador").value : null;
+        const regionGenshin = document.getElementById("region-jugador") ? document.getElementById("region-jugador").value : null;
+
+        const datosParaDB = {
+            juego: sel.juego.nombre,
+            id_jugador: sel.id,
+            id_zona: zonaML, // Ahora se guardará si es Mobile Legends
+            region: regionGenshin, // Ahora se guardará si es Genshin
+            nickname: sel.nick,
+            paquete: sel.paquete.n,
+            precio: sel.paquete.p,
+            metodo: sel.metodo,
+            comprobante: linkFoto,
+            fecha: new Date().toLocaleString(),
+            estado: "Pendiente",
+            idPedido: "REC-" + Math.random().toString(36).substr(2, 6).toUpperCase() // Generamos el ID de pedido aquí
+        };
+
+        // Guardamos y obtenemos el resultado (que incluye el ID de seguimiento generado)
+        if (window.guardarPedidoFB) {
+            await window.guardarPedidoFB(datosParaDB);
+        }
+
+        // --- PASO C: Notificación Silenciosa a Telegram ---
+        // Llamamos a una función que crearemos abajo
+        await enviarNotificacionTelegram(datosParaDB);
+
+        // --- PASO D: Interfaz Final ---
+        status.innerText = "✅ ¡Recarga solicitada con éxito!";
+
+        // Ocultar el ticket y mostrar el modal de éxito (como ya lo hacías)
+        document.getElementById("vista-ticket").classList.add("hidden");
+        document.getElementById("modal-final").classList.remove("hidden");
+
+        // Guardar en el historial local del cliente para que pueda consultar luego
+        guardarEnHistorialLocal(datosParaDB);
+
+    } catch (error) {
+        console.error(error);
+        status.innerText = "❌ Error al procesar. Intenta de nuevo.";
+        if (btnEnvio) btnEnvio.disabled = false;
+        alert("Hubo un problema técnico. Tu comprobante está a salvo, intenta enviar otra vez.");
+    }
+}
+*/
+function mostrarPantallaExito() {
+    // Ocultamos todo lo anterior
+    document.getElementById("vista-ticket").classList.add("hidden");
+    document.getElementById("vista-formulario").classList.add("hidden");
+
+    // Mostramos el modal de éxito que ya tienes en tu HTML
+    const modalFinal = document.getElementById("modal-final");
+    if (modalFinal) modalFinal.classList.remove("hidden");
+
+    // Recargamos el historial para que aparezca la nueva recarga sin refrescar toda la página
+    cargarHistorial();
+
+    limpiarFondo();
+}
+/*
+async function enviarNotificacionTelegram(datos) {
+    const token = "8731862768:AAFMlGF49gkDmOqUy-nlKbHnFfSk2owVIbI"; // Lo obtienes de @BotFather
+    const chatId = "8730026280";   // Lo obtienes de @userinfobot
+
+    const mensaje = `🚀 *NUEVA SOLICITUD DE RECARGA*%0A%0A` +
+        `🎮 *Juego:* ${datos.juego}%0A` +
+        `👤 *ID Jugador:* ${datos.id_jugador}%0A` +
+        `🏷️ *Nick:* ${datos.nickname}%0A` +
+        `💎 *Paquete:* ${datos.paquete}%0A` +
+        `💰 *Precio:* ${datos.precio}%0A` +
+        `💳 *Método:* ${datos.metodo}%0A%0A` +
+        `📸 *Comprobante:* [Ver Imagen](${datos.comprobante})`;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${mensaje}&parse_mode=Markdown`;
+
+    try {
+        await fetch(url);
+    } catch (e) {
+        console.log("Error enviando a Telegram, pero el pedido se guardó en DB.");
+    }
+}
+    */
+/*
+function guardarEnHistorialLocal(pedido) {
+    let historial = JSON.parse(localStorage.getItem('mis_pedidos_elite')) || [];
+    historial.push({
+        id: pedido.id_jugador,
+        juego: pedido.juego,
+        fecha: pedido.fecha,
+        estado: "Pendiente"
+    });
+    localStorage.setItem('mis_pedidos_elite', JSON.stringify(historial));
+}
+*/
+
+function guardarEnHistorialLocal(pedido) {
+    let historial = JSON.parse(localStorage.getItem('mis_pedidos_elite')) || [];
+
+    // Creamos un objeto limpio para el historial
+    const nuevoItemHistorial = {
+        idPedido: pedido.idPedido, // El REC-XXXX
+        juego: pedido.juego,
+        nick: pedido.nickname,
+        id_jugador: pedido.id_jugador, // El ID del cliente
+        paquete: pedido.paquete,
+        precio: pedido.precio,
+        fecha: pedido.fecha,
+        estado: pedido.estado
+    };
+
+    historial.push(nuevoItemHistorial);
+
+    // Solo guardamos los últimos 10 para no llenar la memoria del cel
+    if (historial.length > 5) historial.shift();
+
+    localStorage.setItem('mis_pedidos_elite', JSON.stringify(historial));
+}
+
 
 function nuevaRecarga() {
     document.getElementById("modal-final").classList.add("hidden");
@@ -338,8 +545,6 @@ function finalizarTodo() {
     // Simplemente recarga la página para limpiar toda la memoria de la App
     location.reload();
 }
-
-
 
 
 // Función para la X del Formulario
@@ -370,29 +575,12 @@ function cerrarTicket() {
     document.getElementById("input-comprobante").value = "";
 }
 
-/*
-//BOTON FLOTANTE WHATSAPP, sin ese metodo el boton ya no desaparece
-window.addEventListener('scroll', function () {
-    var scrollPosition = window.scrollY;
-    var whatsappBtn = document.querySelector('.whatsapp-float');
-
-    // El botón aparece después de bajar 300px
-    if (scrollPosition > 300) {
-        whatsappBtn.style.display = 'flex';
-    } else {
-        whatsappBtn.style.display = 'none';
-    }
-});
-*/
-
 //boton con 3 lineas
 function toggleMenu() {
     // Activa o desactiva la clase 'active' en el menú y el fondo
     document.getElementById("side-menu").classList.toggle("active");
     document.getElementById("overlay").classList.toggle("active");
 }
-
-
 
 // 1. Detectar cuando el usuario presiona el botón "Atrás" del celular
 window.onpopstate = function (event) {
@@ -439,8 +627,6 @@ window.onpopstate = function (event) {
 
 
 
-
-
 // --- LÓGICA DEL CARRUSEL ---
 let slideActual = 0;
 const slides = document.querySelectorAll('.carrusel-slide');
@@ -477,4 +663,212 @@ puntos.forEach((punto, i) => {
         // Reiniciamos el auto-play después de 10 segundos de inactividad
         autoPlay = setInterval(() => cambiarSlide(slideActual + 1), 5000);
     });
+});
+/*
+function cargarHistorial() {
+    const lista = document.getElementById("lista-historial-v2");
+    const historial = JSON.parse(localStorage.getItem('mis_pedidos_elite')) || [];
+
+    if (historial.length === 0) {
+        lista.innerHTML = "<p style='text-align:center; opacity:0.5; padding:20px;'>No tienes pedidos aún.</p>";
+        return;
+    }
+
+    lista.innerHTML = "";
+    historial.reverse().forEach(pedido => {
+        lista.innerHTML += `
+            <div class="ticket-historial">
+                <div class="fila-superior">
+                    <span class="juego-nombre">${pedido.juego}</span>
+                    <span class="pedido-id">#${pedido.idPedido || 'S/N'}</span>
+                </div>
+                <div class="fila-media">
+                    <span class="paquete-info">${pedido.paquete}</span>
+                    <span class="precio-info">${pedido.precio}</span>
+                </div>
+                <div class="fila-inferior">
+                    <span class="fecha-info">${pedido.fecha}</span>
+                    <span class="estado-badge ${pedido.estado.toLowerCase()}">${pedido.estado}</span>
+                </div>
+            </div>
+        `;
+    });
+}
+*/
+
+function cargarHistorial() {
+    const lista = document.getElementById("lista-historial-v2");
+    const historial = JSON.parse(localStorage.getItem('mis_pedidos_elite')) || [];
+
+    if (!lista) return;
+
+    if (historial.length === 0) {
+        lista.innerHTML = "<p style='text-align:center; opacity:0.5; padding:20px; color:white;'>No tienes pedidos aún.</p>";
+        return;
+    }
+
+    lista.innerHTML = "";
+
+    // .reverse() para que el último pedido salga arriba
+    [...historial].reverse().forEach(pedido => {
+        lista.innerHTML += `
+            <div class="ticket-historial">
+                
+                <div class="fila-superior">
+                    <span class="juego-nombre">${pedido.juego || 'Juego'}</span>
+                    <span class="pedido-id">${pedido.idPedido || '#S/N'}</span>
+                </div>
+                
+                <div class="fila-media">
+                    <div class="info-cliente">
+                        <span class="paquete-info">${pedido.paquete || 'En proceso..'}</span>                                                                
+                    </div>                  
+                        <span class="precio-info">${pedido.precio || ''}</span>
+                </div>
+
+                <div class="fila-inferior">
+                    <span class="nick-info">${pedido.nick || 'nickname'}</span>
+                    <span class="fecha-info">${pedido.fecha || ''}</span>                   
+                </div>
+
+                <div class="fila-inferior">
+                        <span class="id-cliente-text">ID: ${pedido.id_jugador || '---'}</span>
+                        <span class="entregado">Completado</span>                        
+                </div>
+            </div>
+        `;
+    });
+}
+
+function toggleHistorial() {
+    const modal = document.getElementById("modal-historial");
+    if (modal) {
+        modal.classList.toggle("hidden");
+        // Solo cargamos los datos si el modal se va a mostrar
+        if (!modal.classList.contains("hidden")) {
+            cargarHistorial();
+        }
+    } else {
+        console.error("No se encontró el elemento modal-historial");
+    }
+}
+
+
+
+window.onload = function () {
+    // 1. Cargamos el historial apenas abre la web
+    cargarHistorial();
+
+    // 2. Si tienes otras cosas que inicializar (como el carrusel), van aquí
+    console.log("Web cargada y lista");
+};
+
+
+async function enviarNotificacionTelegram(datos) {
+    const token = "8731862768:AAFMlGF49gkDmOqUy-nlKbHnFfSk2owVIbI";
+    const chatId = "8730026280";
+
+    // Función interna para limpiar textos raros del cliente
+    const limpiar = (txt) => String(txt).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const mensaje = `
+<b>🚀 NUEVA RECARGA ELITE</b>
+━━━━━━━━━━━━━━━━━━
+🎮 <b>Juego:</b> ${limpiar(datos.juego)}
+🆔 <b>ID:</b> <code>${limpiar(datos.id_jugador)}</code>
+👤 <b>Nick:</b> ${limpiar(datos.nickname || 'N/A')}
+💎 <b>Pack:</b> ${datos.paquete}
+💰 <b>Monto:</b> ${datos.precio}
+💳 <b>Pago:</b> ${datos.metodo}
+📍 <b>Extra:</b> ${limpiar(datos.id_zona || datos.region || 'N/A')}
+🆔 <b>Pedido:</b> <code>${datos.idPedido}</code>
+━━━━━━━━━━━━━━━━━━
+<a href="${datos.comprobante}">📸 CLIC PARA VER COMPROBANTE</a>
+    `;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try {
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: mensaje,
+                parse_mode: 'HTML' // Cambiamos Markdown por HTML para evitar errores
+            })
+        });
+    } catch (e) {
+        console.error("Error Telegram:", e);
+    }
+}
+
+/* codigo antes del error
+async function enviarNotificacionTelegram(datos) {
+    const token = "8731862768:AAFMlGF49gkDmOqUy-nlKbHnFfSk2owVIbI"; // <--- PEGA AQUÍ TU TOKEN DE BOTFATHER
+    const chatId = "8730026280";    // <--- PEGA AQUÍ TU ID DE USERINFOBOT
+
+    // Construimos un mensaje profesional para tu Telegram
+    const mensaje = `
+🚀 *NUEVA RECARGA ELITE*
+━━━━━━━━━━━━━━━━━━
+🎮 *Juego:* ${datos.juego}
+🆔 *ID:* \`${datos.id_jugador}\`
+👤 *Nick:* ${datos.nickname || 'No indicado'}
+💎 *Pack:* ${datos.paquete}
+💰 *Monto:* ${datos.precio}
+💳 *Pago:* ${datos.metodo}
+📍 *Extra:* ${datos.id_zona || datos.region || 'N/A'}
+🆔 *Pedido:* \`${datos.idPedido}\`
+━━━━━━━━━━━━━━━━━━
+📸 [VER COMPROBANTE](${datos.comprobante})
+    `;
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    try {
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: mensaje,
+                parse_mode: 'Markdown'
+            })
+        });
+        console.log("✅ Telegram notificado");
+    } catch (e) {
+        console.error("❌ Error notificando a Telegram", e);
+    }
+}
+
+*/
+
+function seleccionarPaquete(idx) {
+    sel.paquete = sel.juego.paquetes[idx];
+
+    // ... aquí mantén tu código que cambia los colores de los bordes ...
+
+    // Actualizar la nueva barra inferior
+    const txtPack = document.getElementById("resumen-paquete");
+    const txtPrice = document.getElementById("resumen-precio");
+
+    if (txtPack && txtPrice) {
+        txtPack.innerText = sel.paquete.n; // Nombre: 100 Diamantes
+        txtPrice.innerText = sel.paquete.p; // Precio: 13 Bs
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Solo un manejador de eventos
+    document.onkeydown = function (e) {
+        if (e.keyCode == 123 || // F12
+            (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || // Ctrl+Shift+I/J/C
+            (e.ctrlKey && e.keyCode == 85)) { // Ctrl+U
+
+            e.preventDefault(); // Forma moderna de evitar la acción
+            return false;
+        }
+    };
 });
