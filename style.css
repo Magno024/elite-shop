@@ -1263,3 +1263,51 @@ footer {
     min-width: 140px;
 }
 
+
+/* Contenedor del Check */
+.check-container {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.check-svg {
+    width: 80px;
+    height: 80px;
+    display: block;
+}
+
+.check-circle {
+    stroke: #10b981;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-linecap: round;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.check-mark {
+    transform-origin: 50% 50%;
+    stroke: #10b981;
+    stroke-width: 5;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke-linecap: round;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+
+/* Efecto de pulso suave al terminar */
+.check-container {
+    animation: pulse-green 2s infinite 1.2s;
+    border-radius: 50%;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
