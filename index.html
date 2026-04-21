@@ -4,343 +4,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Game Store</title>
-    <link rel="icon" href="img/icono-web.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Elite Games 3.0 | Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!--<script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
-    <!-- Fondo oscuro cuando el menú está abierto (opcional) -->
-    <div id="overlay" onclick="toggleMenu()"></div>
 
-    <!--xxxxxxxxx Vista Principal pagina principal xxxxxxxxxx-->
-    <div id="vista-catalogo" class="wrapper">
-
-        <header class="main-banner">
-
-            <div class="header-controls">
-                <div class="menu-btn-new" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <!-- historial -->
-                <div class="btn-historial-flotante" onclick="toggleHistorial()">
-                    <i class="fas fa-history"></i>
-                    <span id="badge-historial" class="hidden"></span>
-                </div>
-            </div>
-
-            <div id="modal-historial" class="modal-flotante hidden">
-                <div class="contenido-historial">
-                    <div class="header-modal">
-                        <h4>HISTORIAL DE RECARGAS</h4>
-                        <button onclick="toggleHistorial()">&times;</button>
-                    </div>
-                    <div id="lista-historial-v2">
-                    </div>
-                </div>
-            </div>
-            <!-- fin historial -->
-
-            <!--nuevo carrisel-->
-            <div class="carousel">
-                <div class="carousel__track">
-                    <!-- 5 Imágenes -->
-                    <div class="slide"><img src="img/banner-free-1.jpg" alt="Imagen 1">
-                        <div class="carrusel-info">
-                            <h2>10% de <span class="resaltado-neon">BONUS</span></h2>
-                            <p>En todas tus recargas de Free Fire</p>
-                            <button class="btn-oferta" onclick="abrirFormulario('ff')">Recargar</button>
-                        </div>
-                    </div>
-                    <div class="slide"><img src="img/banner-mlbb-1.jpg" alt="Imagen 2">
-                        <div class="carrusel-info">
-                            <h2>DIAMANTES con <span class="resaltado-neon">DESCUENTOS</span></h2>
-                            <p>Aprovecha las Ofertas de la Semana</p>
-                            <button class="btn-oferta" onclick="abrirFormulario('ml')">Recargar</button>
-                        </div>
-                    </div>
-                    <div class="slide"><img src="img/banner-gs-1.jpg" alt="Imagen 3">
-                        <div class="carrusel-info">
-                            <h2>Bonus <span class="resaltado-neon">En cada recarga</span></h2>
-                            <p>Cristales a precios de Oferta</p>
-                            <button class="btn-oferta" onclick="abrirFormulario('gs')">Recargar</button>
-                        </div>
-                    </div>
-                    <div class="slide"><img src="img/banner-pubg.jpg" alt="Imagen 4">
-                        <div class="carrusel-info">
-                            <h2>Recargas <span class="resaltado-neon">Pubg Mobile</span></h2>
-                            <p>Aprovecha las Ofertas de la Semana</p>
-                            <button class="btn-oferta" onclick="abrirFormulario('pg')">Recargar</button>
-                        </div>
-                    </div>
-                    <div class="slide"><img src="img/banner1o.jpg" alt="Imagen 5">
-                        <div class="carrusel-info">
-                            <h2>RECARGAS AL <span class="resaltado-neon">INSTANTE</span></h2>
-                            <p>Verificado por miles de clientes</p>
-                            <button class="btn-oferta"
-                                onclick="window.open('https://facebook.com/groups/664921335647676', '_blank')">Saber
-                                Más..</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Flechas -->
-                <button class="btn prev" onclick="mover(-1)">&#10094;</button>
-                <button class="btn next" onclick="mover(1)">&#10095;</button>
-
-                <!-- Puntos indicadores -->
-                <div class="carousel__dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Menú lateral que se despliega -->
-        <div id="side-menu" class="side-menu">
-            <div class="menu-content">
-                <div class="logo">NOVA GAME<span> STORE</span></div>
-                <button class="close-btn" onclick="toggleMenu()">&times;</button>
-
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" onclick="toggleMenu()"><i class="fas fa-home"></i> Inicio</a></li>
-                <li><a href="#" onclick="toggleMenu()"><i class="fas fa-history"></i> Mi Historial</a></li>
-                <li><a href="#" onclick="toggleMenu()"><i class="fas fa-book"></i> Tutoriales</a></li>
-                <li><a href="terminos.html" target="_blank" onclick="toggleMenu()"><i
-                            class="fas fa-file-contract"></i>Términos</a></li>
-                <hr class="menu-divider">
-                <li><a href="https://wa.me/59178914558" target="_blank" onclick="toggleMenu()"><i
-                            class="fab fa-whatsapp"></i> Contacto Soporte</a></li>
-            </ul>
-        </div>
-        <!-- catalogo de juegos -->
-        <div class="titulo-seccion">
-            <h2>🎮 JUEGOS POPULARES</h2>
-            <!--<div class="linea-decorativa"></div>-->
-        </div>
-        <!-- catalogo de juegos -->
-        <main class="grid-juegos" id="contenedor-juegos">
-        </main>
-        <!-- COMO RECARGAR -->
-        <section class="como-recargar">
-            <h2>¿Cómo Recargar?</h2>
-            <p> </p>
-            <div class="pasos">
-                <div class="paso1">
-                    <h3>1. Selecciona un juego</h3>
-                    <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-gamepad2 lucide-gamepad-2 w-7 h-7 text-primary" aria-hidden="true">
-                            <line x1="6" x2="10" y1="11" y2="11"></line>
-                            <line x1="8" x2="8" y1="9" y2="13"></line>
-                            <line x1="15" x2="15.01" y1="12" y2="12"></line>
-                            <line x1="18" x2="18.01" y1="10" y2="10"></line>
-                            <path
-                                d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z">
-                            </path>
-                        </svg></div>
-                    <p>Selecciona el juego y llena el formulario de recarga.</p>
-                </div>
-
-                <div class="paso1.1">
-                    <h3>2. Formulario de Recarga</h3>
-                    <div><svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-clipboard-list w-7 h-7 text-primary">
-                            <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                            <path d="M9 12h6" />
-                            <path d="M9 16h6" />
-                            <path d="M9 8h6" />
-                        </svg></div>
-                    <p>Ingresa tu ID, Nickname, Seleciona un paquete y la Foma de pago.</p>
-                </div>
-
-                <div class="paso2">
-                    <h3>3. Realiza el pago</h3>
-                    <div><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://w3.org">
-                            <path d="M3 3H11V11H3V3ZM5 
-                                5V9H9V5H5ZM13 3H21V11H13V3ZM15 
-                                5V9H19V5H15ZM3 13H11V21H3V13ZM5 
-                                15V19H9V15H5ZM13 13H17V15H13V13ZM17 
-                                15H19V17H17V15ZM19 13H21V15H19V13ZM13 
-                                17H15V21H13V17ZM17 17H21V19H17V17ZM15 
-                                19H17V21H15V19ZM19 19H21V21H19V19Z" />
-                        </svg></div>
-                    <p>Escanea el QR o tigo money, Realiza el pago y sube tu Comprobante.</p>
-                </div>
-                <div class="paso3">
-                    <h3>4. Finaliza tu Recarga</h3>
-                    <div><svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-circle-check-big w-7 h-7 text-primary" aria-hidden="true">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <path d="m9 11 3 3L22 4"></path>
-                        </svg></div>
-                    <p>Verificamos el Comprobante y Procedemos a la Recarga.
-                    </p>
-                </div>
-            </div>
-            <p><br>Nota: Verifica en Historial el Estado de tu Recarga.</p>
-        </section>
-
-        <!-- boton wa flotamnte -->
-        <a href="https://wa.me/59178914558" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-            <img src="img/logo-wa-bla.png" alt="WhatsApp">
-        </a>
-    </div>
-
-    <!-- formulario de recarga -->
-    <div id="vista-formulario" class="modal-overlay hidden">
-        <div class="card-v2">
-            <button class="btn-cerrar-v2" onclick="cerrarFormulario()">×</button>
-
-            <div class="contenido-scroll-formulario">
-                <h2 class="titulo-v2" id="titulo-formulario" style="color: #00f2ff; text-transform: uppercase;"></h2>
-                <div id="logo-juego-contenedor"></div>
-
-                <div class="seccion-paso">
-                    <div class="paso-numero">1</div>
-                    <label class="label-paso">ID Jugador:</label>
-                    <div class="id-group-v2">
-                        <input type="text" id="id-jugador" autocomplete="off" placeholder="Ingresa tu ID">
-                        <input type="text" id="zona-jugador" autocomplete="off" placeholder="Zona" class="hidden">
-                    </div>
-                    <select id="region-jugador" class="hidden">
-                        <option value="">Seleccionar Región</option>
-                        <option value="América">América</option>
-                        <option value="Europa">Europa</option>
-                        <option value="Asia">Asia</option>
-                    </select>
-                    <input type="text" id="nick-jugador" autocomplete="off" placeholder="Nickname (Opcional)">
-                </div>
-
-                <div class="seccion-paso">
-                    <div class="paso-numero">2</div>
-                    <label class="label-paso">Paquetes:</label>
-                    <div id="grid-paquetes" class="grid-paquetes"></div>
-                </div>
-
-                <div class="seccion-paso">
-                    <div class="paso-numero">3</div>
-                    <label class="label-paso">Método de pago:</label>
-                    <div class="pago-selector">
-                        <button id="btn-qr" class="btn-pago"
-                            onclick="seleccionarMetodo('QR Simple')"><span>QR</span></button>
-                        <button id="btn-tigo" class="btn-pago" onclick="seleccionarMetodo('Tigo Money')">Tigo
-                            Money</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-formulario-fijo footer-separado">
-                <div class="resumen-compra">
-                    <span id="resumen-paquete">Elige un paquete</span>
-                    <span id="resumen-precio">0.00</span>
-                </div>
-                <button class="btn-v2 btn-accion-fijo" onclick="procesarSolicitud()">COMPRAR AHORA</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ticket detalle de compra-->
-    <div id="vista-ticket" class="modal-overlay hidden">
-        <div class="card-v2">
-            <button class="btn-cerrar-v2" onclick="cerrarTicket()">×</button>
-
-            <div class="contenido-scroll-formulario">
-                <h2 class="titulo-v2" style="color: #f3ae1a; text-transform: uppercase;">DETALLE DE COMPRA</h2>
-
-                <div id="resumen-ticket" class="detalle-box-v2"></div>
-
-                <div id="info-pago-ticket"></div>
-
-                <div class="seccion-comprobante"
-                    style="background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px dashed #334155;">
-                    <label
-                        style="color: #00f2ff; font-size: 0.8rem; display: block; margin-bottom: 10px; font-weight: bold;">
-                        ADJUNTAR COMPROBANTE DE PAGO:
-                    </label>
-
-                    <input type="file" id="input-comprobante" accept="image/*" onchange="mostrarVistaPrevia(event)"
-                        style="font-size: 0.7rem; color: #94a3b8; width: 100%; cursor: pointer; background: rgba(0, 0, 0, 0.4);">
-
-                    <div id="contenedor-preview" style="margin-top: 15px; display: none;">
-                        <img id="img-preview" src="" alt="Vista previa"
-                            style="max-width: 100%; max-height: 250px; border-radius: 5px; border: 2px dashed #ccc">
-                        <p style="color: #00f2ff; font-size: 0.7rem; margin-top: 5px;">✨ Imagen lista para enviar</p>
-                    </div>
-
-                    <p id="status-carga"
-                        style="color: #ffaa00; font-size: 0.7rem; margin-top: 10px; font-weight: bold;"></p>
-                </div>
-            </div>
-
-            <div class="footer-formulario-fijo footer-centrado">
-                <button class="btn-v2 btn-whatsapp btn-accion-fijo" onclick="finalizarRecarga()"
-                    style="margin: 0 !important; width: 100% !important;">
-                    <!--
-                <svg class="wa-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px; margin-right: 8px; fill: white;">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.63 1.438h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                 -->
-                    <span>FINALIZAR COMPRA</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="modal-final" class="modal-overlay hidden">
-        <div id="card-v2"
-            style="padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px;">
-
-            <div class="check-container">
-                <svg class="check-svg" viewBox="0 0 52 52">
-                    <circle class="check-circle" cx="26" cy="26" r="25" fill="none" />
-                    <path class="check-mark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                </svg>
-            </div>
-
-            <h2 style="color: #10b981; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;">¡Recarga
-                Exitosa!</h2>
-
-            <p style="color: #94a3b8; font-size: 0.9rem; margin: 15px 0; line-height: 1.5;">
-                Gracias por tu confianza, <br>
-                <span style="color: #00f2ff; font-weight: bold;">Verifica tu recarga en tu historal.</span>
-            </p>
+    <header class="main-header">
+        <!--contenido header creo-->
+        <div class="header-container">
+            <button class="burger-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <div class="logo">ELITE<span>GAMES</span></div>
             <!--
-    <div style="background: rgba(243, 174, 26, 0.1); border: 1px solid rgba(243, 174, 26, 0.3); padding: 10px; border-radius: 8px; margin-bottom: 25px;">
-        <p style="color: #f3ae1a; font-size: 0.75rem; margin: 0;">
-            ⚠️ Si no envió sus datos por WhatsApp, su recarga no podrá ser procesada.
-        </p>
-    </div>
+            <div class="search-box">
+                <input type="text" id="gameSearch" placeholder="Buscar juego..." onkeyup="filterGames()">
+                <div id="searchSuggestions" class="suggestions"></div>
+                <i class="fas fa-search search-icon"></i>
+            </div>
 -->
-            <div style="display: flex; gap: 10px; width: 100%; justify-content: center; font-size: 0.8rem;">
-                <button class="btn-v2 btn-accion" onclick="nuevaRecarga()">NUEVA RECARGA</button>
-                <button class="btn-v2 btn-finalizar" onclick="finalizarTodo()">FINALIZAR</button>
-                <!--   
-        <button class="btn-v2" onclick="location.reload()" style="background: #334155; flex: 1; font-size: 0.8rem;">NUEVA RECARGA</button>
-        <button class="btn-v2" onclick="cerrarTodo()" style="background: #10b981; flex: 1; font-size: 0.8rem;">FINALIZAR</button>
-        -->
+            <!-- buscador -->
+            <div class="search-box">
+                <input type="text" id="gameSearch" placeholder="Buscar juego..." autocomplete="off">
+                <div id="searchSuggestions" class="suggestions-panel"></div>
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <!-- boton historial -->
+            <button class="history-btn" onclick="openHistory()"><i class="fas fa-history"></i></button>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+    <nav id="sideMenu" class="side-nav">
+        <div class="side-nav-header">
+            <div class="logo">ELITE<span>GAMES</span></div>
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" onclick="toggleMenu()"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#" onclick="toggleMenu()"><i class="fas fa-history"></i> Mi Historial</a></li>
+            <li><a href="#" onclick="toggleMenu()"><i class="fas fa-book"></i> Tutoriales</a></li>
+            <li><a href="#" onclick="toggleMenu()"><i class="fas fa-file-contract"></i> Términos</a></li>
+            <hr class="menu-divider">
+            <li><a href="#" onclick="toggleMenu()"><i class="fab fa-whatsapp"></i> Contacto Soporte</a></li>
+        </ul>
+    </nav>
+
+    <!--banners-->
+    <main class="content-wrapper">
+
+        <div id="vista-inicio">
+            <section class="banner-carousel">
+                <div class="slides-container">
+                    <div class="slide active"><img src="img/banner1.jpg" alt="Promo 1"></div>
+                    <div class="slide"><img src="img/banner2.jpg" alt="Promo 2"></div>
+                    <div class="slide"><img src="img/banner3.jpg" alt="Promo 3"></div>
+                </div>
+                <button class="prev" onclick="manualMove(-1)">&#10094;</button>
+                <button class="next" onclick="manualMove(1)">&#10095;</button>
+            </section>
+
+            <section class="games-section">
+                <h2 class="section-title">Juegos Populares</h2>
+                <div class="games-grid" id="gamesGrid">
+                </div>
+            </section>
+        </div>
+        <!-- FORMULARIO DE RECARGA-->
+        <section id="vista-paquetes" class="checkout-container hidden">
+            <div class="checkout-card">
+                <div class="game-sidebar">
+                    <img src="img/ff.png" id="img-juego-checkout" alt="Juego">
+                    <div class="game-sidebar-info">
+                        <h2 id="nombre-juego-checkout">Cargando...</h2>
+                        <p id="desc-juego-checkout">Selecciona un juego para ver los detalles.</p>
+                    </div>
+                </div>
+
+                <div class="selection-area">
+                    <div class="form-step">
+                        <span class="step-number">1</span>
+                        <h3>Ingresa tus datos</h3>
+
+                        <div class="input-group">
+                            <input type="number" inputmode="numeric" class="no-spinners" id="id-jugador" placeholder="ID del Jugador" required>
+
+                            <input type="number" inputmode="numeric" class="no-spinners" id="id-zona" placeholder="ID de Zona" class="hidden">
+
+                            <select id="region-genshin" class="hidden">
+                                <option value="" disabled selected>Selecciona Región</option>
+                                <option value="America">América</option>
+                                <option value="Europe">Europa</option>
+                                <option value="Asia">Asia</option>
+                                <option value="TW_HK_MO">TW, HK, MO</option>
+                            </select>
+
+                            <input type="text" id="nick-jugador" placeholder="Nickname (Opcional)">
+                        </div>
+                    </div>
+
+                    <div class="form-step">
+                        <span class="step-number">2</span>
+                        <h3>Selecciona el paquete</h3>
+                        <div class="packages-grid" id="grid-paquetes">
+                        </div>
+                    </div>
+                    <!--3 METODOS DE PAGO-->
+                    <div class="form-step">
+                        <span class="step-number">3</span>
+                        <h3>Método de Pago</h3>
+
+                        <div class="payment-methods">
+                            <div class="method-card" onclick="seleccionarMetodo('qr')">
+                                <input type="radio" name="pay-method" id="pay-qr">
+                                <label for="pay-qr">
+                                    <i class="fas fa-qrcode"></i>
+                                    <span>Simple QR</span>
+                                </label>
+                            </div>
+
+                            <div class="method-card" onclick="seleccionarMetodo('tigo')">
+                                <input type="radio" name="pay-method" id="pay-tigo">
+                                <label for="pay-tigo">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Tigo Money</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="payment-details" class="payment-details hidden">
+                        </div>
+
+                    </div>
+                    <!--PRECIO DE PAGO Y BOTONES VOLVER Y COMPRAR AHORA-->
+                    <div class="checkout-footer">
+                        <div class="summary">
+                            <p>Total a pagar:</p>
+                            <h2 id="total-pago">$0.00</h2>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn-back-outline" onclick="volverAlInicio()">
+                                <i class="fas fa-arrow-left"></i> Volver
+                            </button>
+                            <button class="btn-buy" onclick="continuarAPago()">
+                                Comprar Ahora <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PASOS PARA RECARGAR -->
+
+    <section class="como-recargar">
+        <h2>¿Cómo Recargar?</h2>
+        <p> </p>
+        <div class="pasos">
+            <div class="paso1">
+                <h3>1. Selecciona un juego</h3>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-gamepad2 lucide-gamepad-2 w-7 h-7 text-primary" aria-hidden="true">
+                        <line x1="6" x2="10" y1="11" y2="11"></line>
+                        <line x1="8" x2="8" y1="9" y2="13"></line>
+                        <line x1="15" x2="15.01" y1="12" y2="12"></line>
+                        <line x1="18" x2="18.01" y1="10" y2="10"></line>
+                        <path
+                            d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z">
+                        </path>
+                    </svg></div>
+                <p>Selecciona el juego y llena el formulario de recarga.</p>
+            </div>
+
+            <div class="paso1.1">
+                <h3>2. Formulario de recarga</h3>
+                <div><svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-clipboard-list w-7 h-7 text-primary">
+                        <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                        <path d="M9 12h6" />
+                        <path d="M9 16h6" />
+                        <path d="M9 8h6" />
+                    </svg></div>
+                <p>Ingresa tu ID, Nickname y Seleciona un paquete.</p>
+            </div>
+
+            <div class="paso2">
+                <h3>3. Realiza el pago</h3>
+                <div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-qr-code w-7 h-7 text-primary" aria-hidden="true">
+                        <rect width="5" height="5" x="3" y="3" rx="1"></rect>
+                        <rect width="5" height="5" x="16" y="3" rx="1"></rect>
+                        <rect width="5" height="5" x="3" y="16" rx="1"></rect>
+                        <path d="M21 16h-3a2 2 0 0 0-2 2v3"></path>
+                        <path d="M21 21v.01"></path>
+                        <path d="M12 7v3a2 2 0 0 1-2 2H7"></path>
+                        <path d="M3 12h.01"></path>
+                        <path d="M12 3h.01"></path>
+                        <path d="M12 16v.01"></path>
+                        <path d="M16 12h1"></path>
+                        <path d="M21 12v.01"></path>
+                        <path d="M12 21v-1"></path>
+                    </svg></div>
+                <p>Escanea el QR o tigo money., Realiza el pago y sube tu comprobante.</p>
+            </div>
+            <div class="paso3">
+                <h3>4. Finaliza tu Recarga</h3>
+                <div><svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-circle-check-big w-7 h-7 text-primary" aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <path d="m9 11 3 3L22 4"></path>
+                    </svg></div>
+                <p>Verificamos tu pago y procedemos a la recarga.
+                </p>
             </div>
         </div>
-    </div>
+        <p><br>Nota: Verifica en historial el estado de tu recarga.</p>
+    </section>
 
-    <!-- FOOTER -->
+    <!---
+    <nav id="sideMenu" class="side-nav">
+        <div class="side-nav-header">
+            <div class="logo">ELITE<span>GAMES</span></div>
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> Mi Cuenta</a></li>
+            <li><a href="#"><i class="fas fa-headset"></i> Soporte</a></li>
+        </ul>
+    </nav>
+--->
+
+
+    <!-- footer -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-col">
-                <div class="logo">NOVA GAME <span>STORE</span></div>
+                <div class="logo">ELITE<span>GAMES</span></div>
                 <p>La plataforma de recargas más rápida y segura de la región. Potenciando tu experiencia gaming desde
-                    2018.</p>
+                    2024.</p>
                 <div class="social-links">
-                    <a href="https://facebook.com/groups/664921335647676" target="_blank"><i
-                            class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -350,7 +263,7 @@
             <div class="footer-col">
                 <h4>Explorar</h4>
                 <ul>
-                    <li><a href="index.html" onclick="toggleMenu()">Inicio</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Inicio</a></li>
                     <li><a href="#" onclick="openHistory()">Historial de Pedidos</a></li>
                     <li><a href="#">Juegos Populares</a></li>
                 </ul>
@@ -360,157 +273,54 @@
                 <h4>Información</h4>
                 <ul>
                     <li><a href="javascript:void(0)" onclick="openModal('modal-tutorial')">¿Cómo recargar?</a></li>
-                    <li><a href="terminos.html" onclick="openModal('modal-terminos')">Términos y Condiciones</a>
+                    <li><a href="javascript:void(0)" onclick="openModal('modal-terminos')">Términos y Condiciones</a>
                     </li>
                     <li><a href="javascript:void(0)" onclick="openModal('modal-privacidad')">Privacidad</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Nova Game Store. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Elite Games LLC. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!--- modal detalle de compra -->
+    <div id="modal-container" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <!--modal detalle de compra-->
+            <div id="confirmacion-pago" class="confirm-container">
+                <h2 id="confirm-titulo">Confirmación de Pedido</h2>
 
-    <!--FIREBASE-->
-    <script type="module">
-        // 1. Importar todas las herramientas necesarias
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getDatabase, ref, push, set, get, query, orderByChild, equalTo, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-        import { getStorage, ref as sRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
+                <div class="confirm-detail-card">
+                    <div class="detail-row"><span>Juego:</span> <strong id="conf-juego">-</strong></div>
+                    <div class="detail-row"><span>ID Jugador:</span> <strong id="conf-id">-</strong></div>
+                    <div class="detail-row"><span>Nickname:</span> <strong id="conf-nick">-</strong></div>
+                    <div class="detail-row"><span>Paquete:</span> <strong id="conf-pack">-</strong></div>
+                    <div class="detail-row"><span>Método:</span> <strong id="conf-metodo">-</strong></div>
+                    <div class="detail-row total-row"><span>Total:</span> <strong id="conf-total">-</strong></div>
+                </div>
 
-        // 2. TUS CREDENCIALES (Asegúrate de que sean las correctas de tu consola)
-        const firebaseConfig = {
-            apiKey: "AIzaSyCocm-bkIotM4OTi2sNLzffkglHiqgJZx0",
-            authDomain: "novagame024.firebaseapp.com",
-            databaseURL: "https://novagame024-default-rtdb.firebaseio.com",
-            projectId: "novagame024",
-            storageBucket: "novagame024.firebasestorage.app",
-            messagingSenderId: "1007162916424",
-            appId: "1:1007162916424:web:837927337c8d1d2f43a27d",
-            measurementId: "G-ME6GNSRT90"
-        };
+                <div id="status-box" class="status-box warning">
+                    <i id="status-icon" class="fas fa-exclamation-triangle"></i>
+                    <p id="status-text">Verifique sus datos antes de continuar. Una vez enviado no hay devoluciones.</p>
+                </div>
 
-        // 3. Inicializar Firebase una sola vez
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const storage = getStorage(app);
-        const auth = getAuth(app);
-
-        let promesaClienteAnon = null;
-        async function asegurarClienteAnonimo() {
-            if (auth.currentUser) return;
-            if (!promesaClienteAnon) {
-                promesaClienteAnon = signInAnonymously(auth).catch((e) => {
-                    promesaClienteAnon = null;
-                    throw e;
-                });
-            }
-            await promesaClienteAnon;
-        }
-
-        // --- FUNCIÓN PARA SUBIR IMAGEN A STORAGE ---
-        window.subirArchivoFB = async function (archivo) {
-            try {
-                await asegurarClienteAnonimo();
-                const nombreArchivo = `comprobantes/${Date.now()}_${archivo.name}`;
-                const referenciaStorage = sRef(storage, nombreArchivo);
-
-                // Subir el archivo
-                await uploadBytes(referenciaStorage, archivo);
-                // Obtener y devolver la URL pública
-                return await getDownloadURL(referenciaStorage);
-            } catch (error) {
-                console.error("Error en Storage:", error);
-                throw error;
-            }
-        };
-
-        // --- FUNCIÓN PARA GUARDAR PEDIDO EN DATABASE ---
-        window.guardarPedidoFB = async function (datos) {
-            await asegurarClienteAnonimo();
-            const pedidosRef = ref(database, 'pedidos');
-            const nuevoPedidoRef = push(pedidosRef);
-
-            await set(nuevoPedidoRef, {
-                ...datos,
-                fecha: new Date().toISOString(),
-                estado: "Pendiente"
-            });
-
-            return {
-                dbKey: nuevoPedidoRef.key
-            };
-        };
-
-        // --- FUNCIÓN PARA CONSULTAR ESTADO POR KEY DIRECTA ---
-        window.obtenerEstadoPedidoPorKeyFB = async function (dbKey) {
-            if (!dbKey) return null;
-
-            try {
-                await asegurarClienteAnonimo();
-                const pedidoRef = ref(database, `pedidos/${dbKey}`);
-                const snapshot = await get(pedidoRef);
-                if (!snapshot.exists()) return null;
-                const pedido = snapshot.val();
-                return pedido?.estado || null;
-            } catch (error) {
-                console.error("Error consultando estado por key en Firebase:", error);
-                return null;
-            }
-        };
-
-        // --- FUNCIÓN PARA CONSULTAR ESTADO ACTUAL DEL PEDIDO ---
-        window.obtenerEstadoPedidoFB = async function (idPedido) {
-            if (!idPedido) return null;
-
-            try {
-                await asegurarClienteAnonimo();
-                const pedidosRef = ref(database, "pedidos");
-                const consulta = query(pedidosRef, orderByChild("idPedido"), equalTo(idPedido));
-                const snapshot = await get(consulta);
-
-                if (!snapshot.exists()) return null;
-
-                let estadoActual = null;
-                snapshot.forEach((child) => {
-                    const pedido = child.val();
-                    estadoActual = pedido?.estado || null;
-                });
-
-                return estadoActual;
-            } catch (error) {
-                console.error("Error consultando estado en Firebase:", error);
-                return null;
-            }
-        };
-
-        // --- SUSCRIPCIÓN GLOBAL A PEDIDOS (TIEMPO REAL) ---
-        window.suscribirPedidosFB = function (callback) {
-            const pedidosRef = ref(database, "pedidos");
-            let unsub = null;
-            let cancelado = false;
-            asegurarClienteAnonimo().then(() => {
-                if (cancelado) return;
-                unsub = onValue(pedidosRef, (snapshot) => {
-                    callback(snapshot.val() || {});
-                });
-            }).catch((e) => console.error("Auth tienda:", e));
-            return () => {
-                cancelado = true;
-                if (typeof unsub === "function") {
-                    unsub();
-                    unsub = null;
-                }
-            };
-        };
-
-        asegurarClienteAnonimo().catch(() => { });
-    </script>
-
+                <div id="confirm-buttons" class="confirm-buttons">
+                    <button class="btn-secundario" onclick="closeModal()">Volver</button>
+                    <button class="btn-primario" onclick="procesarPedidoFinal()">Confirmar y Enviar</button>
+                </div>
+            </div>
+            <!--fin modal resumen recarga-->
+            <button class="modal-close" onclick="closeModal(null)">&times;</button>
+            <div id="modal-body">
+            </div>
+        </div>
+    </div>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <script src="script.js"></script>
-
 </body>
 
 </html>
